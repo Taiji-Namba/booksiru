@@ -6,4 +6,5 @@ class Book < ApplicationRecord
     @image_url = image_url
     @url = url
   end
+
 end
