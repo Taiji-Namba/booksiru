@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
   root to: "books#top"
-  resources :books
+  resources :books do
+    get "search", on: :collection
+  end 
 end
