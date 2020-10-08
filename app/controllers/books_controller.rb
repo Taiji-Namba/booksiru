@@ -1,6 +1,8 @@
 class BooksController < ApplicationController
+  attr_accessor :books 
+  
   def top
-    books = RakutenWebService::Books::Book.search(keyword: "Ruby")
+    books = RakutenWebService::Books::Book.search(title: "Ruby")
     books.first(10).each do |book|
       # if book["availability"] == 1 #在庫があるか
 
