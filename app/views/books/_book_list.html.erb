@@ -1,8 +1,8 @@
 <% if @books.present? %>
   <% @books.each do |book| %>
     <div class="list">
-    <% if book.image_url %>
-      <%= link_to (image_tag(book.image_url, style: "width: 70px;height: 100px;display: inline-block;")), book.url %>
+    <% if book.medium_image_url %>
+      <%= link_to (image_tag(book.medium_image_url, style: "width: 70px;height: 100px;display: inline-block;")), book.item_url %>
       <% end %>
 
     <%= book.title %>
