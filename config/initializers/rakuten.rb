@@ -2,6 +2,6 @@ require "rakuten_web_service"
 require "dotenv"
 
 RakutenWebService.configure do |c|
-  c.application_id = APPLICATION_ID
-  c.affiliate_id = AFFILIATE_ID
+  c.application_id = Rails.application.credentials[:application_id]
+  c.affiliate_id = Rails.application.credentials[:affiliate_id]
 end
