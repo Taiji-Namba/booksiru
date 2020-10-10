@@ -4,7 +4,7 @@
       <% if book.medium_image_url %>
       <%= link_to (image_tag(book.medium_image_url, style: "width: 70px;height: 100px;display: inline-block;")), book.item_url %>
       <% end %>
-      <%= book.title %>
+      <%= link_to book.title, book.item_url %>
     </div>
   <% end %>
 <% end %>
