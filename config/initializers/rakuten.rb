@@ -1,6 +1,7 @@
 require "rakuten_web_service"
+require "dotenv"
 
 RakutenWebService.configure do |c|
-  c.application_id = "1037613591072930315"
-  c.affiliate_id = "1d38fc7e.12656d9f.1d38fc7f.3cca4dac"
+  c.application_id = APPLICATION_ID
+  c.affiliate_id = AFFILIATE_ID
 end
