@@ -5,10 +5,6 @@ class BooksController < ApplicationController
     @books = RakutenWebService::Books::Book.search(sort: "sales")
   end
 
-  def show
-
-  end
-
   def search
     if params[:keyword]
       @books = RakutenWebService::Books::Book.search(title: params[:keyword])
