@@ -2,5 +2,5 @@
     <%= form_with(url: search_books_path, method: :get, local: true) do |f| %>
       <%= f.text_field :book, id: "book_search", name: "keyword", placeholder: "キーワードを打ち込んで下さい", style: "width: 200px;" %>
       <%= submit_tag :"検索", name: :検索 %>
-      <% end %>
+    <% end %>
 </div>
