@@ -2,12 +2,7 @@ class BooksController < ApplicationController
   attr_accessor :books 
   
   def home
-    books = RakutenWebService::Books::Book.search(title: "Ruby")
-    books.first(10).each do |book|
-
-      #取得したデータを取得
-      puts book.title
-    end
+    @books = RakutenWebService::Books::Book.search(sort: "sales")
   end
 
   def show
@@ -15,7 +10,7 @@ class BooksController < ApplicationController
   end
 
   def search
-      if params[:keyword]
+    if params[:keyword]
       @books = RakutenWebService::Books::Book.search(title: params[:keyword])
     # books = RakutenWebService::Books::Book.search(keyword: "Ruby")
     # items.page(3).all do |item|
