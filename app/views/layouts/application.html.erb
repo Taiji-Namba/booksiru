@@ -10,7 +10,9 @@
   </head>
 
   <body>
-    <%= render partial: "layouts/sign_in" %>
-    <%= yield %>
+    <header>
+      <%= render partial: "layouts/sign_in" %>
+      <%= yield %>
+    </header>
   </body>
 </html>
