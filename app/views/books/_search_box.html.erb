@@ -1,10 +1,14 @@
 <div id = "search-box">
-    <%= form_with(url: search_books_path, method: :get, local: true) do |f| %>
-      <%= f.text_field :book, id: "book_search", name: "keyword", placeholder: "キーワードを打ち込んで下さい", style: "width: 300px;" %>
-    <input type = "submit" value = "検索">
-    <% end %>
-</div>
+  <%= form_with model:@book, url: search_books_path, method: :get, local: true do |f| %>
+    <%= f.text_field :book, id: "book_search", name: "keyword", placeholder: "キーワードを打ち込んで下さい", style: "width: 300px;" %>
 
+    <%= f.select :search_item, [["コミック", "コミック"], ["小説", "小説"], ["著者名", "著者名"], ["電子書籍", "電子書籍"]], prompt: "全てのジャンル" %>
+
+    <%= f.submit "検索" %>
+  <% end %>
+  
+</div>
+<%# 
 <div class="dropdown">
   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     すべてのジャンル
@@ -16,5 +20,5 @@
     <button class="dropdown-item" type="button">作者名</button>
     <button class="dropdown-item" type="button">電子書籍</button>
   </div>
-</div>
+</div> %>
 
