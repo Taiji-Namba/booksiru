@@ -8,11 +8,6 @@ class BooksController < ApplicationController
   def search
     if params[:keyword]
       @books = RakutenWebService::Books::Book.search(title: params[:keyword])
-    # books = RakutenWebService::Books::Book.search(keyword: "Ruby")
-    # items.page(3).all do |item|
-    # puts item.name
-
-    # @books = Book.search(params[:book])
 
     end
   end
