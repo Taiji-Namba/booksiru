@@ -7,7 +7,9 @@ class BooksController < ApplicationController
 
   def search
     if params[:keyword]
-      @books = RakutenWebService::Books::Book.search(title: params[:keyword], booksGenreId: params[:pulldown])
+      @books = RakutenWebService::Books::Book.search(title: params[:keyword])
     end
+
+    @genres = Genre.all
   end
 end

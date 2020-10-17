@@ -2,7 +2,7 @@
   <%= form_with model:@book, url: search_books_path, method: :get, local: true do |f| %>
     <%= f.text_field :book, id: "book_search", name: "keyword", placeholder: "キーワードを打ち込んで下さい", style: "width: 300px;" %>
 
-    <%= f.select :search_item, [["コミック", "コミック"], ["小説", "小説"], ["電子書籍", "電子書籍"]], prompt: "全てのジャンル", name:"genre" "pulldown" %>
+    <%= f.collection_select :name, @genres, :booksgenreid, :genre, prompt: "全てのジャンル" %>
 
     <%= f.submit "検索" %>
   <% end %>
