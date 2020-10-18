@@ -10,6 +10,5 @@ class BooksController < ApplicationController
       @books = RakutenWebService::Books::Book.search(title: params[:keyword], booksGenreId: params[:booksgenreid])
     end
 
-    @genres = Genre.all
   end
 end
