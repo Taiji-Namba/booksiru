@@ -6,9 +6,13 @@ class BooksController < ApplicationController
   end
 
   def search
-    if params[:keyword]
-      @books = RakutenWebService::Books::Book.search(title: params[:keyword], booksGenreId: params[:booksgenreid])
+    if params[:keyword].present?
+      @books = RakutenWebService::Books::Book.search(
+        title: params[:keyword],
+        booksGenreId: params[:booksgenreid]
+      )
+    else
+      redirect_to root_path
     end
-
   end
 end
