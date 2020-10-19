@@ -9,7 +9,8 @@ class BooksController < ApplicationController
     if params[:keyword].present?
       @books = RakutenWebService::Books::Book.search(
         title: params[:keyword],
-        booksGenreId: params[:booksgenreid]
+        booksGenreId: params[:booksgenreid],
+        orFlag: 0
       )
     else
       redirect_to root_path
