@@ -2,6 +2,7 @@
   <!-- ログイン時 -->
   <%= link_to "アカウント編集", edit_user_registration_path %>
   <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: { confirm: "ログアウトしますか？" } %>
+  <%= link_to "マイページ", destr, method: :delete, data: { confirm: "ログアウトしますか？" } %>
 <% else %>
   <!-- 非ログイン時 -->
   <%= link_to "新規登録", new_user_registration_path %>
