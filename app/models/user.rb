@@ -1,8 +1,9 @@
 class User < ApplicationRecord
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.freeze
 
-  has_many :favorites, dependent: :destroy
-  has_many :favored_authors, through: :favorites, source: :author
+  has_many :author_favorites, dependent: :destroy
+  # has_many :favored_authors, through: :favorites, source: :author
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 
