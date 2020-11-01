@@ -1,23 +1,23 @@
 <% if @books_author.present? %>
-    <% @books_author.each do |book| %>
-      <div class="list_books_author">
-        <%= link_to_if(book.medium_image_url.present?, image_tag(book.medium_image_url, style: "width: 70px;height: 100px;display: inline-block;"), book.item_url) %>
-        <%= link_to book.title, book.item_url %>
-        <%= book.author %>
-        <%= book.item_price %>円(税込み)
-      </div>
-    <% end %>
+  <% @books_author.each do |book| %>
+    <div class="list_books_author">
+      <%= link_to_if(book.medium_image_url.present?, image_tag(book.medium_image_url, style: "width: 70px;height: 100px;display: inline-block;"), book.item_url) %>
+      <%= link_to book.title, book.item_url %>
+      <%= book.author %>
+      <%= book.item_price %>円(税込み)
+    </div>
+  <% end %>
 <% end %>
 
 <% if @books_title.present? %>
-    <% @books_title.each do |book| %>
-      <div class="list_books_title">
-        <% if book.medium_image_url %>
-          <%= link_to (image_tag(book.medium_image_url, style: "width: 70px;height: 100px;display: inline-block;")), book.item_url %>
-        <% end %>
-        <%= link_to book.title, book.item_url %>
-        <%= book.author %>
-        <%= book.item_price %>円(税込み)
-      </div>
-    <% end %>
+  <% @books_title.each do |book| %>
+    <div class="list_books_title">
+      <% if book.medium_image_url %>
+        <%= link_to (image_tag(book.medium_image_url, style: "width: 70px;height: 100px;display: inline-block;")), book.item_url %>
+      <% end %>
+      <%= link_to book.title, book.item_url %>
+      <%= book.author %>
+      <%= book.item_price %>円(税込み)
+    </div>
+  <% end %>
 <% end %>

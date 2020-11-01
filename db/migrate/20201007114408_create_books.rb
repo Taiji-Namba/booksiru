@@ -6,6 +6,7 @@ class CreateBooks < ActiveRecord::Migration[6.0]
       t.string :sales_date
       t.string :availability
       t.string :publisher
+      
 
       t.timestamps
     end
