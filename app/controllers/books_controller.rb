@@ -20,7 +20,7 @@ class BooksController < ApplicationController
       @books_title = RakutenWebService::Books::Book.search(
         title: params[:keyword],
         booksGenreId: params[:booksgenreid],
-        orFlag: 0
+        orFlag: 0,
       )
     end
     
