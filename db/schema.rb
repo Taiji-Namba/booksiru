@@ -10,15 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_27_130443) do
+ActiveRecord::Schema.define(version: 2020_11_01_123112) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "authors", force: :cascade do |t|
-    t.string "name"
+  create_table "author_favorites", force: :cascade do |t|
+    t.string "author_name", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_author_favorites_on_user_id"
   end
 
   create_table "books", force: :cascade do |t|
@@ -30,16 +32,6 @@ ActiveRecord::Schema.define(version: 2020_10_27_130443) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "isbn"
-  end
-
-  create_table "favorites", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "author_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["author_id"], name: "index_favorites_on_author_id"
-    t.index ["user_id", "author_id"], name: "index_favorites_on_user_id_and_author_id", unique: true
-    t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
   create_table "genres", force: :cascade do |t|
@@ -62,6 +54,5 @@ ActiveRecord::Schema.define(version: 2020_10_27_130443) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "favorites", "authors"
-  add_foreign_key "favorites", "users"
+  add_foreign_key "author_favorites", "users"
 end
