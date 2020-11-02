@@ -1,7 +1,7 @@
 <h1>New books information</h1>
 <div class = "content">
-  <%= render partial: "search_box", books: @books, genres: @genres %>
+  <%= render "search_box", books: @books, genres: @genres %>
   <div id = "book_list">
-    <%= render partial: "book_list" %>
+    <%= render "book_list", books_author: @books_author, books_title: @books_title %>
   </div>
 </div>
