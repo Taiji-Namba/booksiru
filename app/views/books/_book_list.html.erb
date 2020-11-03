@@ -4,7 +4,13 @@
       <%= link_to_if(book.medium_image_url.present?, image_tag(book.medium_image_url, style: "width: 70px;height: 100px;display: inline-block;"), book.item_url) %>
       <%= link_to book.title, book.item_url %>
       <%= book.author %>
-      <%  %>
+
+      <% if author_favorite.present? %>
+        <%= link_to "★", author_favorites_path(author_favorite), author_name: book.author, method: :delete %>
+      <% else %> 
+        <%= link_to "☆", author_favorites_path(author_favorite), author_name: book.author, method: :post %>
+      <% end %>
+      
       <%= book.item_price %>円(税込み)
     </div>
   <% end %>
@@ -18,6 +24,13 @@
       <% end %>
       <%= link_to book.title, book.item_url %>
       <%= book.author %>
+
+      <% if author_favorite.present? %>
+        <%= link_to "★", author_favorites_path(author_favorite), author_name: book.author, method: :delete %>
+      <% else %> 
+        <%= link_to "☆", author_favorites_path(author_favorite), author_name: book.author, method: :post %>
+      <% end %>
+      
       <%= book.item_price %>円(税込み)
     </div>
   <% end %>
