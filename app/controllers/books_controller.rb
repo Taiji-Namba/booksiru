@@ -12,6 +12,7 @@ class BooksController < ApplicationController
         booksGenreId: params[:booksgenreid],
         orFlag: 0,
       )
+      # render template: "author_favorites/create"
     else
       redirect_to root_path
     end
