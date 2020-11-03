@@ -6,9 +6,9 @@
       <%= book.author %>
 
       <% if author_favorite.present? %>
-        <%= link_to "★", author_favorites_path(author_favorite), author_name: book.author, method: :delete %>
+        <%= link_to "★", author_favorites_path(author_favorite, author_name: book.author), method: :delete %>
       <% else %> 
-        <%= link_to "☆", author_favorites_path(author_favorite), author_name: book.author, method: :post %>
+        <%= link_to "☆", author_favorites_path(author_favorite, author_name: book.author), method: :post %>
       <% end %>
       
       <%= book.item_price %>円(税込み)
