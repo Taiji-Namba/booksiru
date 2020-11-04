@@ -9,13 +9,13 @@
           <%= link_to book.title, book.item_url %>
           <%= book.author %>
 
-          <span id ="book-<%= book.author %>">
+          <%# <span id="book-<%= book.isbn"> %>
             <% if AuthorFavorite.favored_by?(book, current_user) %>
               <%= render "favorite", {author_favorite: @author_favorite, book: book} %>
             <% else %> 
               <%= render "not_favorite", {author_favorite: @author_favorite, book: book} %>
             <% end %>
-          </span>
+          <%# </span> %>
 
           <%= book.item_price %>円(税込み)
         </div>
