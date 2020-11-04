@@ -1,7 +1,43 @@
 <h1>New books information</h1>
 <div class = "content">
   <%= render "search_box", books: @books, genres: @genres %>
-  <div id = "book_list">
-    <%= render "book_list", books_author: @books_author, books_title: @books_title, author_name: @author_name, author_favorite: @author_favorite %>
+  <div id = "book_list">    
+    <% if @author_books.present? %>
+      <% @author_books.each do |book| %>
+        <div class="list_books_author">
+          <%= link_to_if(book.medium_image_url.present?, image_tag(book.medium_image_url, style: "width: 70px;height: 100px;display: inline-block;"), book.item_url) %>
+          <%= link_to book.title, book.item_url %>
+          <%= book.author %>
+
+          <%# <span id="book-<%= book.isbn"> %>
+            <% if AuthorFavorite.favored_by?(book, current_user) %>
+              <%= render "favorite", {author_favorite: @author_favorite, book: book} %>
+            <% else %> 
+              <%= render "not_favorite", {author_favorite: @author_favorite, book: book} %>
+            <% end %>
+          <%# </span> %>
+
+          <%= book.item_price %>円(税込み)
+        </div>
+      <% end %>
+    <% end %>
+
+    <% if @title_books.present? %>
+      <% @title_books.each do |book| %>
+        <div class="list_books_title">
+          <%= link_to_if(book.medium_image_url.present?, image_tag(book.medium_image_url, style: "width: 70px;height: 100px;display: inline-block;"), book.item_url) %>
+          <%= link_to book.title, book.item_url %>
+          <%= book.author %>
+
+          <% if AuthorFavorite.favored_by?(book, current_user) %>
+            <%= render "favorite", {author_favorite: @author_favorite, book: book} %>
+          <% else %> 
+            <%= render "not_favorite", {author_favorite: @author_favorite, book: book} %>
+          <% end %>
+          
+          <%= book.item_price %>円(税込み)
+        </div>
+      <% end %>
+    <% end %>
   </div>
 </div>
