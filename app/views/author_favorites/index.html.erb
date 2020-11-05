@@ -1,1 +1,4 @@
 <h1>お気に入り作者一覧</h1>
+<% @author_favorites.each do |favorite| %>
+  <p><%= favorite.author_name %> </p>
+<% end %>

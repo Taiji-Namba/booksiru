@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   end
 
   root "books#home"
+  
   resources :books do
     get "search", on: :collection
   end
