@@ -9,4 +9,8 @@ class AuthorFavorite < ApplicationRecord
     find_by(author_name: book.author, user_id: user.id).present?
   end
 
+  def self.favored(book, user)
+    find_by(author_name: book.author, user_id: user.id)
+  end
+
 end
