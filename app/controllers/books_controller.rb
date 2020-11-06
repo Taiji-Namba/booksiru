@@ -12,11 +12,6 @@ class BooksController < ApplicationController
         booksGenreId: params[:booksgenreid],
         orFlag: 0,
       )
-
-      # @author_books.each do |book|
-      #   @author_favorite = current_user.author_favorites.find_by(author_name: book.author)
-      # end
-
     else
       redirect_to root_path
     end
@@ -27,9 +22,6 @@ class BooksController < ApplicationController
         booksGenreId: params[:booksgenreid],
         orFlag: 0,
       )
-      # @author_books.each do |book|
-      #   @author_favorite = current_user.author_favorites.find_by(author_name: book.author)
-      # end
     end
 
   end
