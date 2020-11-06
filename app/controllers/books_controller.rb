@@ -23,6 +23,6 @@ class BooksController < ApplicationController
         orFlag: 0,
       )
     end
-    
+
   end
 end
