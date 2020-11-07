@@ -8,7 +8,7 @@ class AuthorFavorite < ApplicationRecord
   has_many :books_of_the_authors, dependent: :destroy
 
   def self.favored(book, user)
-    find_by(author_name: book.author, user_id: user.id)
+    find_by(author_name: book.author.gsub(" ","").gsub("　",""), user_id: user.id)
   end
 
 end
