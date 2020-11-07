@@ -12,7 +12,7 @@
           <%# <span id="book-<%= book.isbn"> %>
             <% author_favorite = AuthorFavorite.favored(book, current_user) %>
             <% if author_favorite.present? %>
-              <%= render "favorite", {author_favorite: author_favorite} %>
+              <%= render "favorite", {author_favorite: author_favorite}%>
             <% else %> 
               <%= render "not_favorite", {author_favorite: @author_favorite, book: book} %>
             <% end %>
@@ -31,7 +31,7 @@
           <%= book.author %>
 
           <% author_favorite = AuthorFavorite.favored(book, current_user) %>
-            <% if author_favorite.present? %>
+          <% if author_favorite.present? %>
             <%= render "favorite", {author_favorite: author_favorite} %>
           <% else %> 
             <%= render "not_favorite", {author_favorite: @author_favorite, book: book} %>
