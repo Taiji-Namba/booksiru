@@ -6,7 +6,7 @@ FactoryBot.define do
     image_url { "MyString" }
     item_url { "MyString" }
     item_price { "MyString" }
-    books_genre_id { "MyString" }
+    booksgenreid { "MyString" }
     size { "MyString" }
     author_favorite { nil }
   end

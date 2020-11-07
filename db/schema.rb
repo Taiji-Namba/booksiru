@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 2020_11_07_042722) do
     t.string "image_url"
     t.string "item_url"
     t.string "item_price"
-    t.string "books_genre_id"
+    t.string "booksgenreid"
     t.string "size"
     t.bigint "author_favorite_id", null: false
     t.datetime "created_at", precision: 6, null: false
