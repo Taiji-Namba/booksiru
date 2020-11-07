@@ -7,7 +7,7 @@ class CreateBooksOfTheAuthors < ActiveRecord::Migration[6.0]
       t.string :image_url
       t.string :item_url
       t.string :item_price
-      t.string :books_genre_id
+      t.string :booksgenreid
       t.string :size
       t.references :author_favorite, null: false, foreign_key: true
 
