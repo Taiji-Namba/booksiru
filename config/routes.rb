@@ -12,5 +12,5 @@ Rails.application.routes.draw do
 
   resources :author_favorites
 
-  resources :books_of_the_author
+  resources :favored_author_books
 end
