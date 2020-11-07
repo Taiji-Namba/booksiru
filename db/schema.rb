@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_01_123112) do
+ActiveRecord::Schema.define(version: 2020_11_07_042722) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,21 @@ ActiveRecord::Schema.define(version: 2020_11_01_123112) do
     t.string "isbn"
   end
 
+  create_table "books_of_the_authors", force: :cascade do |t|
+    t.string "isbn"
+    t.string "title"
+    t.string "sales_date"
+    t.string "image_url"
+    t.string "item_url"
+    t.string "item_price"
+    t.string "books_genre_id"
+    t.string "size"
+    t.bigint "author_favorite_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["author_favorite_id"], name: "index_books_of_the_authors_on_author_favorite_id"
+  end
+
   create_table "genres", force: :cascade do |t|
     t.string "genre"
     t.string "booksgenreid"
@@ -55,4 +70,5 @@ ActiveRecord::Schema.define(version: 2020_11_01_123112) do
   end
 
   add_foreign_key "author_favorites", "users"
+  add_foreign_key "books_of_the_authors", "author_favorites"
 end
