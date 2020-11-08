@@ -14,7 +14,7 @@
             <% if author_favorite.present? %>
               <%= render "favorite", {author_favorite: author_favorite}%>
             <% else %> 
-              <%= render "not_favorite", {author_favorite: @author_favorite, book: book} %>
+              <%= render "not_favorite", {book: book} %>
             <% end %>
           <%# </span> %>
 
@@ -34,7 +34,7 @@
           <% if author_favorite.present? %>
             <%= render "favorite", {author_favorite: author_favorite} %>
           <% else %> 
-            <%= render "not_favorite", {author_favorite: @author_favorite, book: book} %>
+            <%= render "not_favorite", {book: book} %>
           <% end %>
           
           <%= book.item_price %>円(税込み)

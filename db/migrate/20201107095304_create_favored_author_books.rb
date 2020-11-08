@@ -13,5 +13,6 @@ class CreateFavoredAuthorBooks < ActiveRecord::Migration[6.0]
 
       t.timestamps
     end
+    add_index :favored_author_books, [:author_favorite_id, :isbn], unique: true
   end
 end
