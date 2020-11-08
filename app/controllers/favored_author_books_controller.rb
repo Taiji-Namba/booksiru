@@ -1,5 +1,6 @@
 class FavoredAuthorBooksController < ApplicationController
   def create
+
   end
 
   def show
