@@ -5,7 +5,7 @@ class AuthorFavorite < ApplicationRecord
     message: "はすでにお気に入り登録されています"
   }
 
-  has_many :favored_author_books, dependent: :destroy
+has_many :favored_author_books, dependent: :destroy
 
   def self.favored(book, user)
     find_by(author_name: book.author.gsub(" ","").gsub("　",""), user_id: user.id)
