@@ -16,11 +16,19 @@ ActiveRecord::Schema.define(version: 2020_11_07_095304) do
   enable_extension "plpgsql"
 
   create_table "author_favorites", force: :cascade do |t|
-    t.string "author_name", null: false
     t.bigint "user_id", null: false
+    t.bigint "author_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["author_id"], name: "index_author_favorites_on_author_id"
+    t.index ["user_id", "author_id"], name: "index_author_favorites_on_user_id_and_author_id", unique: true
     t.index ["user_id"], name: "index_author_favorites_on_user_id"
+  end
+
+  create_table "authors", force: :cascade do |t|
+    t.string "author_name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "books", force: :cascade do |t|
@@ -70,6 +78,7 @@ ActiveRecord::Schema.define(version: 2020_11_07_095304) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "author_favorites", "authors"
   add_foreign_key "author_favorites", "users"
   add_foreign_key "favored_author_books", "author_favorites"
 end
