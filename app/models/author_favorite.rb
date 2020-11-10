@@ -6,8 +6,8 @@ class AuthorFavorite < ApplicationRecord
     message: "はすでにお気に入り登録されています"
   }
 
-  def self.favored(book, user)
-    find_by(author_name: book.author.gsub(" ","").gsub("　",""), user_id: user.id)
+  def self.favored(user)
+    find_by(author_id: params[:author_id], user_id: user.id)
   end
 
 end

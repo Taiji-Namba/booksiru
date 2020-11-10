@@ -1,7 +1,11 @@
 class AuthorsController < ApplicationController
 
   def create
-    author = current_user.author_favorites.create!(author_name: params[:author_name])
+    author = AuthorFavorite.build!(author_params)
+  end
+
+  def author_params
+    params.require(:author).permit(:author_name)
   end
 
 end
