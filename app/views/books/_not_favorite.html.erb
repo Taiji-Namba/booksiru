@@ -1,1 +1,9 @@
+<%= form_with model: author do |f| %>
+  <%= f.fields_for :author_favorites do |fa| %>
+    <%= fa.hidden_field :author_id, value: fa.id %>
+    <%= fa.hidden_field :user_id, value: current_user.id %>
+  <%= f.submit %>
+<% end %>
+
+
 <%= link_to "☆", author_favorites_path(author_name: book.author.gsub(" ","").gsub("　","")), method: :post, remote: true %>
