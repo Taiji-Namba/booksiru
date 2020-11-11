@@ -1,8 +1,14 @@
-<%= form_with model: author do |f| %>
-  <%= f.fields_for :author_favorites do |fa| %>
-    <%= fa.hidden_field :author_id, value: fa.id %>
-    <%= fa.hidden_field :user_id, value: current_user.id %>
-  <%= f.submit %>
+<% if author.present? %>
+
+<% else %>
+  <%= form_with model: @author do |f| %>
+    <%= f.hidden_field :author_name, value: book.author %>
+    <%= f.fields_for :author_favorites do |a| %>
+      <%= a.hidden_field :author_id, value: @author.id %>
+      <%= a.hidden_field :user_id, value: current_user.id %>
+    <%= f.submit %>
+    <% end %>
+  <% end %>
 <% end %>
 
-<%= link_to "☆", author_favorites_path(author_name: book.author.gsub(" ","").gsub("　","")), method: :post, remote: true %>
+<%# <%= link_to "☆", author_favorites_path(author_name: book.author.gsub(" ","").gsub("　","")), method: :post, remote: true %>
