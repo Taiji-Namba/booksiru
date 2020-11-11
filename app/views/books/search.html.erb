@@ -7,18 +7,21 @@
         <div class="list_books_author">
           <%= link_to_if(book.medium_image_url.present?, image_tag(book.medium_image_url, style: "width: 70px;height: 100px;display: inline-block;"), book.item_url) %>
           <%= link_to book.title, book.item_url %>
-          <%= book.author %>
 
           <%# <span id="book-<%= book.isbn"> %>
-            <% author_favorite = AuthorFavorite.favored(current_user) %>
-            <% if author_favorite.present? %>
-              <%= render "favorite", {author_favorite: author_favorite}%>
-            <% else %> 
-              <%= render "not_favorite", {book: book} %>
+            <% author = Author.registered(book) %>
+            <% if author.present? %>
+              <% author_favorite = author.favored(author, current_user) %>
+              <% if author_favorite.present? %>
+                  <%= render "favorite", {author_favorite: author_favorite}%>
+              <% else %> 
+                  <%= render "not_favorite", {author: author, book: book} %>
+              <% end %>
+            <% else %>
+              <%= render "not_favorite", {author: author, book: book} %>
             <% end %>
           <%# </span> %>
-
-          <%= book.item_price %>円(税込み)
+            <%= book.item_price %>円(税込み)
         </div>
       <% end %>
     <% end %>
@@ -30,14 +33,20 @@
           <%= link_to book.title, book.item_url %>
           <%= book.author %>
 
-          <% author_favorite = AuthorFavorite.favored(current_user) %>
-          <% if author_favorite.present? %>
-            <%= render "favorite", {author_favorite: author_favorite} %>
-          <% else %> 
-            <%= render "not_favorite", {book: book} %>
-          <% end %>
-          
-          <%= book.item_price %>円(税込み)
+          <%# <span id="book-<%= book.isbn"> %>
+            <% author = Author.registered(book) %>
+            <% if author.present? %>
+              <% author_favorite = author.favored(author, current_user) %>
+              <% if author_favorite.present? %>
+                  <%= render "favorite", {author_favorite: author_favorite}%>
+              <% else %> 
+                  <%= render "not_favorite", {author: author, book: book} %>
+              <% end %>
+            <% else %>
+              <%= render "not_favorite", {author: author, book: book} %>
+            <% end %>
+          <%# </span> %>
+            <%= book.item_price %>円(税込み)
         </div>
       <% end %>
     <% end %>
