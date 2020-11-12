@@ -7,13 +7,14 @@
         <div class="list_books_author">
           <%= link_to_if(book.medium_image_url.present?, image_tag(book.medium_image_url, style: "width: 70px;height: 100px;display: inline-block;"), book.item_url) %>
           <%= link_to book.title, book.item_url %>
+          <%= book.author %>
 
           <%# <span id="book-<%= book.isbn"> %>
             <% author = Author.registered(book) %>
             <% if author.present? %>
-              <% author_favorite = author.favored(author, current_user) %>
+              <% author_favorite = AuthorFavorite.favored(author, current_user) %>
               <% if author_favorite.present? %>
-                  <%= render "favorite", {author_favorite: author_favorite}%>
+                  <%= render "favorite", {author_favorite: author_favorite, author: author}%>
               <% else %> 
                   <%= render "not_favorite", {author: author, book: book} %>
               <% end %>
@@ -36,9 +37,9 @@
           <%# <span id="book-<%= book.isbn"> %>
             <% author = Author.registered(book) %>
             <% if author.present? %>
-              <% author_favorite = author.favored(author, current_user) %>
+              <% author_favorite = AuthorFavorite.favored(author, current_user) %>
               <% if author_favorite.present? %>
-                  <%= render "favorite", {author_favorite: author_favorite}%>
+                  <%= render "favorite", {author_favorite: author_favorite, author: author}%>
               <% else %> 
                   <%= render "not_favorite", {author: author, book: book} %>
               <% end %>
