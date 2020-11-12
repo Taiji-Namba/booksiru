@@ -6,7 +6,7 @@ class AuthorFavorite < ApplicationRecord
     message: "はすでにお気に入り登録されています"
   }
 
-  def favored(author, user)
+  def self.favored(author, user)
     find_by(author_id: author.id, user_id: user.id)
   end
 
