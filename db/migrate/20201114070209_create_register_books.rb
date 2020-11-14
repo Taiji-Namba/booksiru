@@ -6,5 +6,6 @@ class CreateRegisterBooks < ActiveRecord::Migration[6.0]
 
       t.timestamps
     end
+    add_index :register_books. [:author_favorite_id, :favored_author_id], unique: true
   end
 end
