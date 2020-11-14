@@ -5,12 +5,12 @@ class AuthorFavoritesController < ApplicationController
   end
 
   def create
-    author_favorite = current_user.author_favorites.create!(author_id: params[:author_id])
+    current_user.author_favorites.create!(author_id: author.id)
     redirect_back(fallback_location: root_path)
   end
 
   def destroy
-    author_favorite = current_user.author_favorites.find_by(author_id: params[:author_id])
+    author_favorite = current_user.author_favorites.find_by(author_name: params[:author_name])
     author_favorite.destroy!
     redirect_back(fallback_location: root_path)
   end
