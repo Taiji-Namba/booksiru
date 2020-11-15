@@ -1,5 +1,5 @@
 <%= form_with model: author do |f| %>
-  <%= f.hidden_field :author_name, value: book.author %>
+  <%= f.hidden_field :author_name, value: book.author.gsub(" ","").gsub("　","") %>
   <%= f.submit "☆" %>
 <% end %>
 
