@@ -1,4 +1,3 @@
-<%# <%= form_with model: author, local: true do |f| %>
-<%# <%= f.hidden_field :author, value: author_name %>
-
-<%# <%= link_to "★", author_favorites_path(author_favorite, author_id: author.id), method: :delete, remote: true %>
+<%= form_with url: author_author_favorites_path(author_id: author.id), method: :delete, local: true do |f| %>
+  <%= f.submit "★" %>
+<% end %>

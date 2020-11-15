@@ -1,7 +1,4 @@
-<%= form_with model: author do |f| %>
-  <%= f.hidden_field :author_name, value: book.author %>
+<%= form_with model: author, url: {controller: "authors", action: "create"}, method: :post, local: true do |f| %>
+  <%= f.hidden_field :author_name, value: book.author.gsub(" ","").gsub("　","") %>
   <%= f.submit "☆" %>
 <% end %>
-
-
-<%# <%= link_to "☆", author_favorites_path(author_name: book.author.gsub(" ","").gsub("　","")), method: :post, remote: true %>

@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   end
 
   resources :authors do 
-    resource :author_favorites
+    resource :author_favorites, only: [:index, :create, :destroy]
   end
 
   resources :favored_author_books
