@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_07_095304) do
+ActiveRecord::Schema.define(version: 2020_11_14_070209) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,11 +51,11 @@ ActiveRecord::Schema.define(version: 2020_11_07_095304) do
     t.string "item_price"
     t.string "books_genre_id"
     t.string "size"
-    t.bigint "author_favorite_id", null: false
+    t.bigint "author_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["author_favorite_id", "isbn"], name: "index_favored_author_books_on_author_favorite_id_and_isbn", unique: true
-    t.index ["author_favorite_id"], name: "index_favored_author_books_on_author_favorite_id"
+    t.index ["author_id", "isbn"], name: "index_favored_author_books_on_author_id_and_isbn", unique: true
+    t.index ["author_id"], name: "index_favored_author_books_on_author_id"
   end
 
   create_table "genres", force: :cascade do |t|
@@ -63,6 +63,16 @@ ActiveRecord::Schema.define(version: 2020_11_07_095304) do
     t.string "booksgenreid"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "register_books", force: :cascade do |t|
+    t.bigint "author_favorite_id", null: false
+    t.bigint "favored_author_book_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["author_favorite_id", "favored_author_book_id"], name: "register_books_index", unique: true
+    t.index ["author_favorite_id"], name: "index_register_books_on_author_favorite_id"
+    t.index ["favored_author_book_id"], name: "index_register_books_on_favored_author_book_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -80,5 +90,7 @@ ActiveRecord::Schema.define(version: 2020_11_07_095304) do
 
   add_foreign_key "author_favorites", "authors"
   add_foreign_key "author_favorites", "users"
-  add_foreign_key "favored_author_books", "author_favorites"
+  add_foreign_key "favored_author_books", "authors"
+  add_foreign_key "register_books", "author_favorites"
+  add_foreign_key "register_books", "favored_author_books"
 end
