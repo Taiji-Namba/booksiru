@@ -11,7 +11,6 @@
 
           <%# <span id="book-<%= book.isbn"> %>
             <% author = Author.registered(book) %>
-            <%# <% author_favorite = AuthorFavorite.favored(author, current_user) %> %>
             <% if AuthorFavorite.favored_by?(author, current_user) %>
                 <%= render "favorite", {author: author}%>
             <% else %> 
