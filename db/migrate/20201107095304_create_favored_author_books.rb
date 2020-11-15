@@ -9,10 +9,10 @@ class CreateFavoredAuthorBooks < ActiveRecord::Migration[6.0]
       t.string :item_price
       t.string :books_genre_id
       t.string :size
-      t.references :author_favorite, null: false, foreign_key: true
+      t.references :author, null: false, foreign_key: true
 
       t.timestamps
     end
-    add_index :favored_author_books, [:author_favorite_id, :isbn], unique: true
+    add_index :favored_author_books, [:author_id, :isbn], unique: true
   end
 end

@@ -10,7 +10,10 @@ Rails.application.routes.draw do
     get "search", on: :collection
   end
 
-  resources :authors
-  resources :author_favorites
+  resources :authors do 
+    resource :author_favorites, only: [:index, :create, :destroy]
+  end
+
   resources :favored_author_books
+
 end

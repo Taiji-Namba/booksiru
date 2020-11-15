@@ -1,19 +1,15 @@
 class AuthorsController < ApplicationController
 
   def create
-    author = Author.new(author_params)
-    author.save!
-
-    # author_favorite = AuthorFavorite.create!(author_favorite_params)
-    # author_favorite.save!
+    author = Author.find_or_create_by!(author_params)
+    current_user.author_favorites.create!(author_id: author.id)
+    redirect_back(fallback_location: root_path)
   end
 
-  def author_params
-    params.require(:author).permit(:author_name, author_favorites_attributes: [:author_id, :user_id])
-  end
+  private
 
-  # def author_favorite_params
-  #   params.require(:author).permit(:author_id, :user_id)
-  # end
+    def author_params
+      params.require(:author).permit(:author_name)
+    end
 
 end
