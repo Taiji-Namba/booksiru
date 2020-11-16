@@ -32,14 +32,8 @@ ActiveRecord::Schema.define(version: 2020_11_14_070209) do
   end
 
   create_table "books", force: :cascade do |t|
-    t.string "title"
-    t.string "author"
-    t.string "sales_date"
-    t.string "availability"
-    t.string "publisher"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "isbn"
   end
 
   create_table "favored_author_books", force: :cascade do |t|
