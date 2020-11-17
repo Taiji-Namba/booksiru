@@ -7,10 +7,9 @@ class AuthorsController < ApplicationController
     current_user.author_favorites.create!(author_id: author.id)
     
     # 登録した著者の未発売の書籍をFavoredAuthorBookに登録
-    # favored_author_book = FavoredAuthorBook.find_or_create_by!(
-    #   author_id: author.id,
-    #   author_params
-    # )
+    if ストロングパラメーターが空じゃない時
+    favored_author_book = FavoredAuthorBook.find_or_create_by!(favored_author_book_params)
+    end
     
     redirect_back(fallback_location: root_path)
 
@@ -23,7 +22,8 @@ class AuthorsController < ApplicationController
     end
 
     def favored_author_book_params
-      params.require(:favored_author_books).permit(
+      params.require(:favored_author_book).permit(
+        :author_id,
         :isbn,
         :title,
         :sales_date,

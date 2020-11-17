@@ -1,9 +1,17 @@
 <%= form_with model: author, url: {controller: "authors", action: "create"}, method: :post, local: true do |f| %>
   <%= f.hidden_field :author_name, value: book.author.gsub(" ","").gsub("　","") %>
 
-    <%# 未発売の本のみcreateアクションに各種パラメーターを渡す %>
-    <% if book.sales_date.delete("/年|月|日|頃|/").gsub(/|上旬|中旬|下旬|以降/, "上旬" => "5", "中旬" => "15", "下旬" => "25", "以降" => "01").to_i > Time.current.strftime("%Y%m%d").to_i %>
-    <% end%>
+  <%# 未発売の本のみcreateアクションに各種パラメーターを渡す %>
+  <% if book.sales_date.delete("/年|月|日|頃|/").gsub(/|上旬|中旬|下旬|以降/, "上旬" => "5", "中旬" => "15", "下旬" => "25", "以降" => "01").to_i > Time.current.strftime("%Y%m%d").to_i %>
+    <%= f.hidden_field :author_id, value: author.id %>
+    <%= f.hidden_field :isbn, value: book.isbn %>
+    <%= f.hidden_field :title, value: book.title %>
+    <%= f.hidden_field :item_url, value: book.medium_image_url %>
+    <%= f.hidden_field :item_price, value: book.item_price %>
+    <%= f.hidden_field :item_price, value: book.item_price %>
+    <%= f.hidden_field :booksgenreid, value: book.books_genre_id %>
+    <%= f.hidden_field :size, value: book.size %>
+  <% end %>
 
   <%= f.submit "☆" %>
 <% end %>
