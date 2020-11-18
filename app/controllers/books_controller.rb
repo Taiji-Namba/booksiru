@@ -11,6 +11,8 @@ class BooksController < ApplicationController
         author: params[:keyword],
         booksGenreId: params[:booksgenreid],
         orFlag: 0,
+        sort: "-releaseDate",
+        availability: 5
       )
     else
       redirect_to root_path
