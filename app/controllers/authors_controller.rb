@@ -37,19 +37,6 @@ class AuthorsController < ApplicationController
 
     def author_params
       params.require(:author).permit(:author_name)
-  end
-
-    def favored_author_book_params
-      params.require(:favored_author_book).permit(
-        :isbn,
-        :title,
-        :sales_date,
-        :image_url,
-        :item_url,
-        :item_price,
-        :booksgenreid,
-        :size
-      )
     end
 
 end
