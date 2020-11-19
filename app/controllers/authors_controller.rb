@@ -9,14 +9,14 @@ class AuthorsController < ApplicationController
     to_be_favored_author_books = RakutenWebService::Books::Book.search(
     author: author.author_name,
     sorts: "-releaseDate",
-    availability: 5
     )
 
-    to_be_books = []
-    to_be_favored_author_books.each do |b|
-      to_be_books << FavoredAuthorBook.new(
+    favored_author_books = to_be_favored_author_books.map do |b|
+      FavoredAuthorBook.new(
+        author_name: author.author_name,
         isbn: b.isbn,
         title: b.title,
+        sales_date: b.sales_date,
         image_url: b.medium_image_url,
         item_url: b.item_url,
         item_price: b.item_price,
@@ -24,13 +24,9 @@ class AuthorsController < ApplicationController
         size: b.size
       )
     end
-    FavoredAuthorBook.import(to_be_books, on_duplicate_key_update: false)
-      
-    # # 登録した著者の未発売の書籍をFavoredAuthorBookに登録
-    # if params.has_key?(:favored_author_book)
-    # favored_author_book = author.favored_author_books.find_or_create_by!(favored_author_book_params)
-    # end
-    
+
+    FavoredAuthorBook.import favored_author_books
+        
     redirect_back(fallback_location: root_path)
 
   end

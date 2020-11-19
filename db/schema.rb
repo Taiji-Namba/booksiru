@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 2020_11_14_070209) do
   end
 
   create_table "favored_author_books", force: :cascade do |t|
+    t.string "author_name"
     t.string "isbn"
     t.string "title"
     t.string "sales_date"
@@ -45,11 +46,9 @@ ActiveRecord::Schema.define(version: 2020_11_14_070209) do
     t.string "item_price"
     t.string "books_genre_id"
     t.string "size"
-    t.bigint "author_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["author_id", "isbn"], name: "index_favored_author_books_on_author_id_and_isbn", unique: true
-    t.index ["author_id"], name: "index_favored_author_books_on_author_id"
+    t.index ["isbn"], name: "index_favored_author_books_on_isbn", unique: true
   end
 
   create_table "genres", force: :cascade do |t|
@@ -84,7 +83,6 @@ ActiveRecord::Schema.define(version: 2020_11_14_070209) do
 
   add_foreign_key "author_favorites", "authors"
   add_foreign_key "author_favorites", "users"
-  add_foreign_key "favored_author_books", "authors"
   add_foreign_key "register_books", "author_favorites"
   add_foreign_key "register_books", "favored_author_books"
 end
