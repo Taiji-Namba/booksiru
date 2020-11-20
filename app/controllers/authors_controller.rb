@@ -5,7 +5,7 @@ class AuthorsController < ApplicationController
     author = Author.find_or_create_by!(author_params)
 
     # ログインユーザーのお気に入りに登録
-    current_user.author_favorites.create!(author_id: author.id)
+    author_favorite = current_user.author_favorites.create!(author_id: author.id)
     
     #お気に入り登録した著者の本を取得
     to_be_favored_author_books = RakutenWebService::Books::Book.search(
@@ -28,7 +28,16 @@ class AuthorsController < ApplicationController
       )
     end
     FavoredAuthorBook.import favored_author_books
-        
+    
+    # register_booksにauthor_favorite_idとfavored_author_book_idを持つレコードを登録
+    favored_author_books.each do |book|
+      author_favorite.register_books.create!(favored_author_book_id: book.id)
+    end
+
+    
+    # favored_author_books = FavoredAuthorBook.where()
+    # favored_author_book.register_books.create!()
+
     redirect_back(fallback_location: root_path)
 
   end
