@@ -9,8 +9,10 @@ class AuthorsController < ApplicationController
     
     #お気に入り登録した著者の本を取得
     to_be_favored_author_books = RakutenWebService::Books::Book.search(
-    author: author.author_name,
-    sorts: "-releaseDate",
+      author: author.author_name,
+      booksGenreId: "001",
+      orFlag: 0,
+      sort: "-releaseDate",
     )
 
     # 未発売の本だけfavored_author_booksテーブルに各種情報を登録
