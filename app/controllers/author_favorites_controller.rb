@@ -10,6 +10,7 @@ class AuthorFavoritesController < ApplicationController
     if AuthorFavorite.find_by(author_id: params[:author_id]).nil?
       author = Author.find_by(id: params[:author_id])
       favored_author_books = FavoredAuthorBook.where(author_name: author.author_name)
+      
       author.destroy!
       favored_author_books.destroy_all
     end
