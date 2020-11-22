@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 2020_11_22_005027) do
   create_table "notices", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "register_book_id", null: false
-    t.integer "flag"
+    t.integer "noticed_flag"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["register_book_id"], name: "index_notices_on_register_book_id"
