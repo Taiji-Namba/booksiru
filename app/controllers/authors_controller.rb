@@ -36,10 +36,6 @@ class AuthorsController < ApplicationController
       author_favorite.register_books.create!(favored_author_book_id: book.id)
     end
 
-    
-    # favored_author_books = FavoredAuthorBook.where()
-    # favored_author_book.register_books.create!()
-
     redirect_back(fallback_location: root_path)
 
   end
