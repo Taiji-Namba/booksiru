@@ -3,7 +3,7 @@ class CreateNotices < ActiveRecord::Migration[6.0]
     create_table :notices do |t|
       t.references :user, null: false, foreign_key: true
       t.references :register_book, null: false, foreign_key: true
-      t.integer :flag
+      t.integer :noticed_flag
 
       t.timestamps
     end
