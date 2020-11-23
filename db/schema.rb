@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 2020_11_14_070209) do
     t.string "isbn"
     t.string "title"
     t.string "sales_date"
+    t.integer "sales_date_integer"
     t.string "image_url"
     t.string "item_url"
     t.string "item_price"

@@ -5,6 +5,7 @@ class CreateFavoredAuthorBooks < ActiveRecord::Migration[6.0]
       t.string :isbn
       t.string :title
       t.string :sales_date
+      t.integer :sales_date_integer
       t.string :image_url
       t.string :item_url
       t.string :item_price
