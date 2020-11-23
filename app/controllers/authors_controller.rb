@@ -32,6 +32,11 @@ class AuthorsController < ApplicationController
     end
     FavoredAuthorBook.import favored_author_books
 
+    # noticesテーブルにcurrent_user.idとfavored_author_book_idを登録
+    favored_author_books.each do |b|
+      current_user.notices.create!(favored_author_book_id: b.id)
+    end
+
     redirect_back(fallback_location: root_path)
 
   end
