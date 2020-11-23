@@ -1,7 +1,5 @@
-# set :output, "/path/to/my/cron_log.log"
-
-every 1.day, at: "5:05 pm" do
-  rake "rake:create_notice"
+every 1.day, at: "5:10 pm" do
+  rake "notice_book:create_notice"
 end
 
 
@@ -10,9 +8,3 @@ end
 #   runner "MyModel.some_method"
 #   rake "some:great:rake:task"
 # end
-#
-# every 4.days do
-#   runner "AnotherModel.prune_old_records"
-# end
-
-# Learn more: http://github.com/javan/whenever
