@@ -1,6 +1,6 @@
 class FavoredAuthorBook < ApplicationRecord
-  has_many :register_books, dependent: :destroy
-  has_many :registered_books, through: :register_books, source: :author_favorites
+  has_many :notices, dependent: :destroy
+  has_many :notice_books, through: :notices, source: :users
   
   validates :isbn, uniqueness:{message: "はすでに登録されています"}
 end

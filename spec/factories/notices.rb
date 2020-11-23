@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :notice do
     user { nil }
-    register_book { nil }
-    noticed_flag { 1 }
+    favored_author_book { nil }
+    notice_flag { 0 }
   end
 end

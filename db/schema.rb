@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_22_005027) do
+ActiveRecord::Schema.define(version: 2020_11_14_070209) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,23 +60,13 @@ ActiveRecord::Schema.define(version: 2020_11_22_005027) do
 
   create_table "notices", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "register_book_id", null: false
-    t.integer "noticed_flag"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["register_book_id"], name: "index_notices_on_register_book_id"
-    t.index ["user_id", "register_book_id"], name: "index_notices_on_user_id_and_register_book_id", unique: true
-    t.index ["user_id"], name: "index_notices_on_user_id"
-  end
-
-  create_table "register_books", force: :cascade do |t|
-    t.bigint "author_favorite_id", null: false
     t.bigint "favored_author_book_id", null: false
+    t.integer "notice_flag", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["author_favorite_id", "favored_author_book_id"], name: "register_books_index", unique: true
-    t.index ["author_favorite_id"], name: "index_register_books_on_author_favorite_id"
-    t.index ["favored_author_book_id"], name: "index_register_books_on_favored_author_book_id"
+    t.index ["favored_author_book_id"], name: "index_notices_on_favored_author_book_id"
+    t.index ["user_id", "favored_author_book_id"], name: "notices_index", unique: true
+    t.index ["user_id"], name: "index_notices_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -94,8 +84,6 @@ ActiveRecord::Schema.define(version: 2020_11_22_005027) do
 
   add_foreign_key "author_favorites", "authors"
   add_foreign_key "author_favorites", "users"
-  add_foreign_key "notices", "register_books"
+  add_foreign_key "notices", "favored_author_books"
   add_foreign_key "notices", "users"
-  add_foreign_key "register_books", "author_favorites"
-  add_foreign_key "register_books", "favored_author_books"
 end

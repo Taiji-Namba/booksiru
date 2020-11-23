@@ -1,9 +1,8 @@
 class Notice < ApplicationRecord
   belongs_to :user
-  belongs_to :register_book
-  validates :noticed_flag, presence: true
-  validates :user_id, uniqueness: {
-    scope: :register_book_id,
-    message: "は通知登録されています"
+  belongs_to :favored_author_book
+  validates :favored_author_book_id, uniqueness: {
+    scope: :user_id,
+    message: "はすでに登録されています"
   }
 end

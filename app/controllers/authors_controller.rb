@@ -31,9 +31,9 @@ class AuthorsController < ApplicationController
     end
     FavoredAuthorBook.import favored_author_books
     
-    # register_booksにauthor_favorite_idとfavored_author_book_idを持つレコードを登録
+    # noticesにuser_idとfavored_author_book_idを持つレコードを登録
     favored_author_books.each do |book|
-      author_favorite.register_books.create!(favored_author_book_id: book.id)
+      current_user.notices.create!(favored_author_book_id: book.id)
     end
 
     redirect_back(fallback_location: root_path)
