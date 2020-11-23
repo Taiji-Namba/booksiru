@@ -1,8 +1,8 @@
 class RegisterBook < ApplicationRecord
-  belongs_to :author_favorite
+  belongs_to :user
   belongs_to :favored_author_book
-  validates :author_favorite_id, uniqueness: {
-    scope: :favored_author_book_id,
+  validates :favored_author_book_id,, uniqueness: {
+    scope: :user_id
     message: "はすでに登録されています"
   }
   has_many :notices, dependent: :destroy
