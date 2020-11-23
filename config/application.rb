@@ -11,5 +11,6 @@ module Portfolio
     config.load_defaults 6.0
     config.i18n.default_locale = :ja
     config.time_zone = "Asia/Tokyo"
+    config.autoload_paths += %W(#{config.root}/lib)
   end
 end
