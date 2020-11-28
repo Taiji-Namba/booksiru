@@ -19,10 +19,16 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
         :recoverable, :rememberable, :validatable, :omniauthable
 
+  after_create :send_welcome_email
+
   def self.guest
     find_or_create_by!(email: "guest@example.com") do |user|
       user.password = SecureRandom.urlsafe_base64
       user.nickname = "ゲストさん"
     end
+  end
+
+  def send_welcome_email
+    RegistrationMailer.welcome_email(self).deliver
   end
 end
