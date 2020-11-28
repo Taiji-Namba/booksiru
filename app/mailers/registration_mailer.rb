@@ -1,4 +1,4 @@
-class NotificationMailer < ApplicationMailer
+class RegistrationMailer < ApplicationMailer
   default from: "booksiru164@gmail.com"
 
   def welcome_email
