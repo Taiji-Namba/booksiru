@@ -14,15 +14,16 @@ class AuthorsController < ApplicationController
       orFlag: 0,
       sort: "-releaseDate",
     )
-
+    
     # 未発売の本だけfavored_author_booksテーブルに各種情報を登録
     favored_author_books = to_be_favored_author_books.select{|tob| tob.sales_date.delete("/年|月|日|頃|/").gsub(/|上旬|中旬|下旬|以降/, "上旬" => "5", "中旬" => "15", "下旬" => "25", "以降" => "01").to_i > Time.current.strftime("%Y%m%d").to_i}.map do |b|
+      rational_type_days_to_release = Date.parse(b.sales_date.delete("/年|月|日|頃|/").gsub(/|上旬|中旬|下旬|以降/, "上旬" => "5", "中旬" => "15", "下旬" => "25", "以降" => "01")) - Date.today
       FavoredAuthorBook.new(
         author_name: author.author_name,
         isbn: b.isbn,
         title: b.title,
         sales_date: b.sales_date,
-        days_to_release: b.sales_date.delete("/年|月|日|頃|/").gsub(/|上旬|中旬|下旬|以降/, "上旬" => "5", "中旬" => "15", "下旬" => "25", "以降" => "01").to_i - Time.current.strftime("%Y%m%d").to_i,
+        days_to_release: rational_type_days_to_release.to_i,
         image_url: b.medium_image_url,
         item_url: b.item_url,
         item_price: b.item_price,
@@ -46,5 +47,4 @@ class AuthorsController < ApplicationController
     def author_params
       params.require(:author).permit(:author_name)
     end
-
 end
