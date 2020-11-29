@@ -9,4 +9,12 @@ namespace :notice_book do
       t.update_attribute :days_to_release, rational_type_days_to_release.to_i
     end
   end
+
+  task send_notification_email: :environment do
+    users = User.left_joins(notices: :favored_author_book).where(notices: {notice_flag: 0}, favored_author_books: {days_to_release: 0..3})
+
+    users.each do |user|
+      NotificationMailer.send_notification_email(user).deliver_now
+    end
+  end
 end
