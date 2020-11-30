@@ -1,4 +1,5 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "ブクシル <booksiru164@gmail.com>"
+  default from: "ブクシル <#{Rails.application.credentials.mail[:user_name]}>"
+  binding.pry
   layout 'mailer'
 end
