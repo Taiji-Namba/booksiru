@@ -9,10 +9,9 @@ class NotificationMailer < ApplicationMailer
       @title = book.title
       @isbn = book.isbn
       @sales_date = book.sales_date
-      @image_url = book.image_url
+      @publisher_name = book.publisher_name
       @item_url = book.item_url
       @item_price = book.item_price
-      @books_genre_id = book.books_genre_id
       @size = book.size
 
       mail(subject: "【#{@author_name}:#{@title}】発売まであと3日です", to: @user.email)
