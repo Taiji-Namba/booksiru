@@ -5,4 +5,5 @@ set :output, "#{Rails.root}/log/cron.log"
 
 every 1.day, at: "8:00 am" do
   rake "notice_book:update_days"
+  rake "notice_book:send_notification_email"
 end

@@ -1,0 +1,35 @@
+<p>
+  <%= @author_name %>の<%= @title %>があと3日で発売です<br>
+  ぜひお買い逃しのないように！
+</p>
+
+  <table>
+    <tr>
+      <th align="left">発売日</th>
+      <td><%= @sales_date %></td>
+    </tr>
+    <tr>
+      <th align="left">書名</th>
+      <td><%= @title %></td>
+    </tr>
+    <tr>
+      <th align="left">作者名</th>
+      <td><%= @author_name %></td>
+    </tr>
+    <tr>
+      <th align="left">価格</th>
+      <td><%= @item_price %></td>
+    </tr>
+    <tr>
+      <th align="left">出版社</th>
+      <td><%= @publisher_name %></td>
+    </tr>
+    <tr>
+      <th align="left">書籍形態</th>
+      <td><%= @size %></td>
+    </tr>
+    <tr>
+      <th align="left">楽天で予約するなら</th>
+      <td><%= @item_url %></td>
+    </tr>
+  </table>

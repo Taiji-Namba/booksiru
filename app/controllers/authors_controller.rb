@@ -24,10 +24,9 @@ class AuthorsController < ApplicationController
         title: b.title,
         sales_date: b.sales_date,
         days_to_release: rational_type_days_to_release.to_i,
-        image_url: b.medium_image_url,
+        publisher_name: b.publisher_name,
         item_url: b.item_url,
         item_price: b.item_price,
-        books_genre_id: b.books_genre_id,
         size: b.size
       )
     end
