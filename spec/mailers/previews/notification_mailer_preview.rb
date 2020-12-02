@@ -2,7 +2,7 @@
 class NotificationMailerPreview < ActionMailer::Preview
 
   def send_notification_email
-    NotificationMailer.send_notification_email(User.first)
+    NotificationMailer.send_notification_email(User.find(2))
   end
 
 end
