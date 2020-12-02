@@ -42,10 +42,9 @@ ActiveRecord::Schema.define(version: 2020_11_14_070209) do
     t.string "title"
     t.string "sales_date"
     t.integer "days_to_release"
-    t.string "image_url"
     t.string "item_url"
     t.string "item_price"
-    t.string "books_genre_id"
+    t.string "publisher_name"
     t.string "size"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
