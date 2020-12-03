@@ -30,7 +30,7 @@ class AuthorsController < ApplicationController
         size: b.size
       )
     end
-    FavoredAuthorBook.import favored_author_books
+    FavoredAuthorBook.import favored_author_books, on_duplicate_key_update: {conflict_target: [:isbn]}
 
     # noticesテーブルにcurrent_user.idとfavored_author_book_idを登録
     favored_author_books.each do |b|
