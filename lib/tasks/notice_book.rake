@@ -16,7 +16,6 @@ namespace :notice_book do
 
     users.each do |user|
       NotificationMailer.send_notification_email(user).deliver_now
-      # Rake::Task["notice_book:update_notice_flag"].invoke
       notices = Notice.left_joins(:user).where(users: {id: user.id})
       notices.each { |notice| notice.update(notice_flag: 1) }
     end
