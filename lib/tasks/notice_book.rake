@@ -20,12 +20,5 @@ namespace :notice_book do
       notices = Notice.left_joins(:user).where(users: {id: user.id})
       notices.each { |notice| notice.update(notice_flag: 1) }
     end
-
-    
-  end
-
-  desc "通知フラグを更新"
-  task update_notice_flag: :environment do 
-    
   end
 end
