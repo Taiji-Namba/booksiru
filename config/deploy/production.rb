@@ -1,6 +1,6 @@
 server "18.178.26.183", user: "taiji", roles: %w{app db web}
 set :ssh_options, {
-  keys: %w(~/.ssh/bookosiru.pem),
+  keys: %w(~/.ssh/booksiru.pem),
   forward_agent: true,
   auth_methods: %w(publickey),
 }
