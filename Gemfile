@@ -21,6 +21,11 @@ gem 'devise-i18n'
 gem 'activerecord-import'
 gem 'whenever', require: false
 gem 'omniauth-line'
+gem "capistrano", "~> 3.10", require: false
+gem "capistrano-rails", "~> 1.6", require: false
+gem 'capistrano-rbenv', '~> 2.2'
+gem 'capistrano-rbenv-vars', '~> 0.1'
+gem 'capistrano3-puma'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
