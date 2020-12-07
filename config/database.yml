@@ -80,6 +80,7 @@ test:
 #
 production:
   <<: *default
-  database: portfolio_production
-  username: portfolio
-  password: <%= ENV['PORTFOLIO_DATABASE_PASSWORD'] %>
+  database: booksiru_production
+  username: postgres
+  password: <%= Rails.application.credentials.db[:password] %>
+  host: <%= Rails.application.credentials.db[:hostname] %>
