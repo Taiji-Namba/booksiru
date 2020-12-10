@@ -12,6 +12,7 @@ class BooksController < ApplicationController
         booksGenreId: params[:booksgenreid],
         orFlag: 0,
         sort: "-releaseDate",
+        hits: 10
       )
     else
       redirect_to root_path
@@ -22,6 +23,7 @@ class BooksController < ApplicationController
         title: params[:keyword],
         booksGenreId: params[:booksgenreid],
         orFlag: 0,
+        hits: 10
       )
     end
   end
