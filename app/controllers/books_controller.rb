@@ -14,7 +14,6 @@ class BooksController < ApplicationController
         sort: "sales",
         hits: 5
       )
-      binding.pry
     else
       redirect_to root_path
     end
