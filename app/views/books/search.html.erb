@@ -10,9 +10,9 @@
 
           <% favored_book = FavoredBook.registered(book) %>
           <% if BookFavorite.favored_by?(favored_book, current_user) %>
-              <%= render template: "favored_books/favorite", {title_kana: title_kana}%>
+              <%= render "favored_books/favorite", favored_book: favored_book %>
           <% else %> 
-              <%= render template: "favored_books/not_favorite", {title_kana: title_kana, book: book} %>
+              <%= render "favored_books/not_favorite", favored_book: favored_book, book: book %>
           <% end %>
 
           <%= book.author %>
@@ -35,12 +35,12 @@
         <div class="list_books_title">
           <%= link_to_if(book.medium_image_url.present?, image_tag(book.medium_image_url, style: "width: 70px;height: 100px;display: inline-block;"), book.item_url) %>
           <%= link_to book.title, book.item_url %>
-          
+
           <% favored_book = FavoredBook.registered(book) %>
           <% if BookFavorite.favored_by?(favored_book, current_user) %>
-              <%= render template: "favored_books/favorite", {title_kana: title_kana}%>
+              <%= render "favored_books/favorite", favored_book: favored_book %>
           <% else %> 
-              <%= render template: "favored_books/not_favorite", {title_kana: title_kana, book: book} %>
+              <%= render "favored_books/not_favorite", favored_book: favored_book, book: book %>
           <% end %>
           
           <%= book.author %>
