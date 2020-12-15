@@ -1,10 +1,10 @@
 class AuthorsController < ApplicationController
 
   def create
-    # ボタンを押すと著者(author)がauthorsテーブルに登録される。すでに登録されている場合はauthorを取得するだけ
+    # ボタンを押すと著者(author)がauthorsテーブルに登録される。すでに登録されている場合は取得するだけ
     author = Author.find_or_create_by!(author_params)
 
-    # ログインユーザーのお気に入りに登録
+    # ログインユーザーのお気に入り著者に登録
     author_favorite = current_user.author_favorites.create!(author_id: author.id)
     
     #お気に入り登録した著者の本を取得

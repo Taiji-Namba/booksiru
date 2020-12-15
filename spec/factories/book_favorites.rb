@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :book_favorite do
     user { nil }
-    favored_book { nil }
+    title_kana { nil }
   end
 end
