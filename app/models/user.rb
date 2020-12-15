@@ -3,9 +3,10 @@ class User < ApplicationRecord
 
   has_many :author_favorites, dependent: :destroy
   has_many :favored_authors, through: :author_favorites, source: :author
+  has_many :book_favorites, dependent: :destroy
+  has_many :favorite_books, through: :book_favorites, source: :favored_books
   has_many :notices, dependent: :destroy
   has_many :notice_books, through: :notices, source: :favored_author_book
-
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and 
