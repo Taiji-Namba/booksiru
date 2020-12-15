@@ -33,11 +33,11 @@ ActiveRecord::Schema.define(version: 2020_12_15_114524) do
 
   create_table "book_favorites", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "favored_book_id", null: false
+    t.bigint "title_kana_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["favored_book_id"], name: "index_book_favorites_on_favored_book_id"
-    t.index ["user_id", "favored_book_id"], name: "index_book_favorites_on_user_id_and_favored_book_id", unique: true
+    t.index ["title_kana_id"], name: "index_book_favorites_on_title_kana_id"
+    t.index ["user_id", "title_kana_id"], name: "index_book_favorites_on_user_id_and_title_kana_id", unique: true
     t.index ["user_id"], name: "index_book_favorites_on_user_id"
   end
 
@@ -105,6 +105,12 @@ ActiveRecord::Schema.define(version: 2020_12_15_114524) do
     t.index ["user_id"], name: "index_notices_on_user_id"
   end
 
+  create_table "title_kanas", force: :cascade do |t|
+    t.string "title_kana", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -120,7 +126,7 @@ ActiveRecord::Schema.define(version: 2020_12_15_114524) do
 
   add_foreign_key "author_favorites", "authors"
   add_foreign_key "author_favorites", "users"
-  add_foreign_key "book_favorites", "favored_books"
+  add_foreign_key "book_favorites", "title_kanas"
   add_foreign_key "book_favorites", "users"
   add_foreign_key "book_notices", "favored_books"
   add_foreign_key "book_notices", "users"
