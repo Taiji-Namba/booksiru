@@ -11,7 +11,9 @@ class BookFavoritesController < ApplicationController
       
       title_kana.destroy!
       favored_books.destroy_all
+    end
+
+    redirect_back(fallback_location: root_path)
   end
 
-  redirect_back(fallback_location: root_path)
 end
