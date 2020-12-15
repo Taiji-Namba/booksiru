@@ -8,15 +8,16 @@
           <%= link_to_if(book.medium_image_url.present?, image_tag(book.medium_image_url, style: "width: 70px;height: 100px;display: inline-block;"), book.item_url) %>
           <%= link_to book.title, book.item_url %>
           <%= book.author %>
-          <%= book.sales_date %>
 
-            <% author = Author.registered(book) %>
-            <% if AuthorFavorite.favored_by?(author, current_user) %>
-                <%= render "favorite", {author: author}%>
-            <% else %> 
-                <%= render "not_favorite", {author: author, book: book} %>
-            <% end %>
-            <%= book.item_price %>円(税込み)
+          <% author = Author.registered(book) %>
+          <% if AuthorFavorite.favored_by?(author, current_user) %>
+              <%= render "favorite", {author: author}%>
+          <% else %> 
+              <%= render "not_favorite", {author: author, book: book} %>
+          <% end %>
+
+          <%= book.sales_date %>
+          <%= book.item_price %>円(税込み)
         </div>
       <% end %>
     <% end %>
@@ -27,15 +28,16 @@
           <%= link_to_if(book.medium_image_url.present?, image_tag(book.medium_image_url, style: "width: 70px;height: 100px;display: inline-block;"), book.item_url) %>
           <%= link_to book.title, book.item_url %>
           <%= book.author %>
-          <%= book.sales_date %>
 
-            <% author = Author.registered(book) %>
-            <% if AuthorFavorite.favored_by?(author, current_user) %>
-                <%= render "favorite", {author: author}%>
-            <% else %> 
-                <%= render "not_favorite", {author: author, book: book} %>
-            <% end %>
-            <%= book.item_price %>円(税込み)
+          <% author = Author.registered(book) %>
+          <% if AuthorFavorite.favored_by?(author, current_user) %>
+              <%= render "favorite", {author: author}%>
+          <% else %> 
+              <%= render "not_favorite", {author: author, book: book} %>
+          <% end %>
+            
+          <%= book.item_price %>円(税込み)
+          <%= book.sales_date %>
         </div>
       <% end %>
     <% end %>
