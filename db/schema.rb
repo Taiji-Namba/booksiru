@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_14_070209) do
+ActiveRecord::Schema.define(version: 2020_12_15_111000) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,16 @@ ActiveRecord::Schema.define(version: 2020_11_14_070209) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "book_favorites", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "favored_book_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["favored_book_id"], name: "index_book_favorites_on_favored_book_id"
+    t.index ["user_id", "favored_book_id"], name: "index_book_favorites_on_user_id_and_favored_book_id", unique: true
+    t.index ["user_id"], name: "index_book_favorites_on_user_id"
+  end
+
   create_table "books", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -49,6 +59,21 @@ ActiveRecord::Schema.define(version: 2020_11_14_070209) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["isbn"], name: "index_favored_author_books_on_isbn", unique: true
+  end
+
+  create_table "favored_books", force: :cascade do |t|
+    t.string "author_name"
+    t.string "isbn"
+    t.string "title"
+    t.string "title_kana"
+    t.string "sales_date"
+    t.integer "days_to_release"
+    t.string "item_url"
+    t.string "item_price"
+    t.string "publisher_name"
+    t.string "size"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "genres", force: :cascade do |t|
@@ -84,6 +109,8 @@ ActiveRecord::Schema.define(version: 2020_11_14_070209) do
 
   add_foreign_key "author_favorites", "authors"
   add_foreign_key "author_favorites", "users"
+  add_foreign_key "book_favorites", "favored_books"
+  add_foreign_key "book_favorites", "users"
   add_foreign_key "notices", "favored_author_books"
   add_foreign_key "notices", "users"
 end
