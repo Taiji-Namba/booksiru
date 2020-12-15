@@ -1,0 +1,3 @@
+<%= form_with url: favored_book_book_favorites_path(favored_book_id: favored_book.id), method: :delete, local: true do |f| %>
+  <%= f.submit "★" %>
+<% end %>
