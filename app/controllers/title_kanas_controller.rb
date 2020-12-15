@@ -1,15 +1,15 @@
 class TitleKanasController < ApplicationController
   def create
-    # ボタンを押すと作品名がfavored_booksテーブルに登録される。すでに登録されている場合は取得するだけ
-    favored_book = FavoredBook.find_or_create_by!(title_kana_params)
+    # ボタンを押すとその作品のカナがtitle_kanaテーブルに登録される。すでに登録されている場合は取得するだけ
+    title_kana = TitleKana.find_or_create_by!(title_kana_params)
 
     # ログインユーザーのお気に入り作品に登録
-    book_favorite = current_user.book_favorites.create!(favored_book_id: favored_book.id)
-  end
+  #   book_favorite = current_user.book_favorites.create!(title_kana_id: title_kana.id)
+  # end
 
-  private
+private
 
   def title_kana_params
-    params.require(:title_kanas).permit(:title_kana)
+    params.require(:title_kana).permit(:title_kana)
   end
 end

@@ -1,3 +1,3 @@
-<%= form_with url: title_kana_favorites_path(title_kana_id: title_kana.id), method: :delete, local: true do |f| %>
+<%= form_with url: title_kana_book_favorites_path(title_kana_id: title_kana.id), method: :delete, local: true do |f| %>
   <%= f.submit "★" %>
 <% end %>
