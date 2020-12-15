@@ -18,7 +18,7 @@ Rails.application.routes.draw do
 
   resources :favored_author_books
 
-  resources :favored_books do 
+  resources :title_kanas do 
     resource :book_favorites, only: [:index, :create, :destroy]
   end
 end
