@@ -8,4 +8,9 @@ class FavoredBook < ApplicationRecord
   validates :title_kana, presence: true, uniqueness: {message: "はすでにお気に入り登録されています"}
   has_many :book_notices, dependent: :destroy
   has_many :notice_favored_books, through: :book_notices, source: :user
+
+  def self.registered(book)
+    find_or_initialize_by(title_kana: book.title_kana)
+  end
+
 end
