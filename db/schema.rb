@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 2020_12_15_114524) do
   create_table "book_notices", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "favored_book_id", null: false
+    t.integer "notice_flag", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["favored_book_id"], name: "index_book_notices_on_favored_book_id"

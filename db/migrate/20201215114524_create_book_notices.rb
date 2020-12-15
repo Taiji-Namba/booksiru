@@ -3,6 +3,7 @@ class CreateBookNotices < ActiveRecord::Migration[6.0]
     create_table :book_notices do |t|
       t.references :user, null: false, foreign_key: true
       t.references :favored_book, null: false, foreign_key: true
+      t.integer :notice_flag, default: 0
 
       t.timestamps
     end
