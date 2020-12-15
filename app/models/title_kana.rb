@@ -1,0 +1,2 @@
+class TitleKana < ApplicationRecord
+end
