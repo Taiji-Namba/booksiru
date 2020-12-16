@@ -108,6 +108,7 @@ ActiveRecord::Schema.define(version: 2020_12_15_114524) do
 
   create_table "title_kanas", force: :cascade do |t|
     t.string "title_kana", null: false
+    t.string "author_name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

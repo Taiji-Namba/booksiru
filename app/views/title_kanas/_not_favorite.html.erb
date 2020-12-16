@@ -1,5 +1,5 @@
 <%= form_with model: title_kana, url: {controller: "title_kanas", action: "create"}, method: :post, local: true do |f| %>
   <%= f.hidden_field :title_kana, value: book.title_kana %>
-  <%= f.hidden_field :author, value: book.author %>
+  <%= f.hidden_field :author_name, value: book.author %>
   <%= f.submit "☆" %>
 <% end %>

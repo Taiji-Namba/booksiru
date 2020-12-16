@@ -44,6 +44,6 @@ class TitleKanasController < ApplicationController
   private
 
   def title_kana_params
-    params.require(:title_kana).permit(:title_kana, :author)
+    params.require(:title_kana).permit(:title_kana, :author_name)
   end
 end
