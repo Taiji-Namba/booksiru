@@ -18,7 +18,7 @@ class TitleKanasController < ApplicationController
     favored_books = to_be_favored_books.select{|tob| tob.sales_date.delete("/年|月|日|頃|/").gsub(/|上旬|中旬|下旬|以降/, "上旬" => "5", "中旬" => "15", "下旬" => "25", "以降" => "01").to_i > Time.current.strftime("%Y%m%d").to_i}.map do |b|
       rational_type_days_to_release = Date.parse(b.sales_date.delete("/年|月|日|頃|/").gsub(/|上旬|中旬|下旬|以降/, "上旬" => "5", "中旬" => "15", "下旬" => "25", "以降" => "01")) - Date.today
       FavoredBook.new(
-        author_name: b.author_name,
+        author_name: b.author,
         isbn: b.isbn,
         title: b.title,
         title_kana: title_kana.title_kana,
