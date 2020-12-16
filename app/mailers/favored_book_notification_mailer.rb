@@ -1,0 +1,2 @@
+class FavoredBookNotificationMailer < ApplicationMailer
+end
