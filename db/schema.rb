@@ -85,6 +85,7 @@ ActiveRecord::Schema.define(version: 2020_12_15_114524) do
     t.string "size"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["isbn"], name: "index_favored_books_on_isbn", unique: true
   end
 
   create_table "genres", force: :cascade do |t|
