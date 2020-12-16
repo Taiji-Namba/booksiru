@@ -9,6 +9,7 @@ class TitleKanasController < ApplicationController
     #お気に入り登録した作品カナの本を取得
     to_be_favored_books = RakutenWebService::Books::Book.search(
       title_kana: title_kana.title_kana,
+      author: title_kana.author_name,
       booksGenreId: "001",
       orFlag: 0,
       sort: "-releaseDate"
@@ -21,7 +22,7 @@ class TitleKanasController < ApplicationController
         author_name: b.author,
         isbn: b.isbn,
         title: b.title,
-        title_kana: title_kana.title_kana,
+        title_kana: b.title_kana,
         sales_date: b.sales_date,
         days_to_release: rational_type_days_to_release.to_i,
         publisher_name: b.publisher_name,
@@ -30,11 +31,12 @@ class TitleKanasController < ApplicationController
         size: b.size
       )
     end
+    
     FavoredBook.import favored_books, on_duplicate_key_update: {conflict_target: [:isbn]}
 
     # book_noticesテーブルにcurrent_user.idとfavored_book_idを登録
     favored_books.each do |b|
-      current_user.notices.create!(favored_book_id: b.id)
+      current_user.book_notices.create!(favored_book_id: b.id)
     end
 
     redirect_back(fallback_location: root_path)
@@ -43,6 +45,6 @@ class TitleKanasController < ApplicationController
   private
 
   def title_kana_params
-    params.require(:title_kana).permit(:title_kana)
+    params.require(:title_kana).permit(:title_kana, :author_name)
   end
 end
