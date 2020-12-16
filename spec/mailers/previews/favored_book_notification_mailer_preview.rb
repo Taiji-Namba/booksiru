@@ -2,7 +2,7 @@
 class FavoredBookNotificationMailerPreview < ActionMailer::Preview
 
   def send_favored_book_notification_email
-    NotificationMailer.send_notification_email(User.find(1))
+    FavoredBookNotificationMailer.send_notification_email(User.find(1))
   end
 
 end

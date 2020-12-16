@@ -30,10 +30,10 @@ namespace :notice_book do
 
   desc "お気に入りした本(favored_books)のうち発売日が3日以内のものを通知"
   task send_favored_book_notification_email: :environment do
-    users = User.left_joins(notices: :favored_book).where(notices: {notice_flag: 0}, favored_books: {days_to_release: 0..3})
+    users = User.left_joins(book_notices: :favored_book).where(book_notices: {notice_flag: 0}, favored_books: {days_to_release: 0..3})
 
     users.each do |user|
-      FavoredBookNotificationMailer.send_notification_email(user).deliver_now
+      FavoredBookNotificationMailer.send_favored_book_notification_email(user).deliver_now
       favored_book_notices = BookNotice.left_joins(:user).where(users: {id: user.id})
       favored_book_notices.each { |notice| notice.update(notice_flag: 1) }
     end
