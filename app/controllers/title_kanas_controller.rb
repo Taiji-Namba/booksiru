@@ -21,7 +21,7 @@ class TitleKanasController < ApplicationController
         author_name: b.author,
         isbn: b.isbn,
         title: b.title,
-        title_kana: title_kana.title_kana,
+        title_kana: b.title_kana,
         sales_date: b.sales_date,
         days_to_release: rational_type_days_to_release.to_i,
         publisher_name: b.publisher_name,
@@ -30,6 +30,7 @@ class TitleKanasController < ApplicationController
         size: b.size
       )
     end
+    binding.pry
     FavoredBook.import favored_books, on_duplicate_key_update: {conflict_target: [:isbn]}
 
     # book_noticesテーブルにcurrent_user.idとfavored_book_idを登録
