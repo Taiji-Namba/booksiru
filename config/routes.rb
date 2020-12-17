@@ -7,8 +7,12 @@ Rails.application.routes.draw do
   end
 
   root "books#home"
+
+  resources :users,only: [:favorite] do 
+    get "favorite", on: :collection
+  end
   
-  resources :books do
+  resources :books, only: [:index, :search] do
     get "search", on: :collection
   end
 
