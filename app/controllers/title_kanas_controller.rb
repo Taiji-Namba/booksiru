@@ -16,8 +16,8 @@ class TitleKanasController < ApplicationController
     )
 
     # 未発売の本だけfavored_booksテーブルに各種情報を登録
-    favored_books = to_be_favored_books.select{|tob| tob.sales_date.delete("/年|月|日|頃|/").gsub(/|上旬|中旬|下旬|以降/, "上旬" => "5", "中旬" => "15", "下旬" => "25", "以降" => "01").to_i > Time.current.strftime("%Y%m%d").to_i}.map do |b|
-      rational_type_days_to_release = Date.parse(b.sales_date.delete("/年|月|日|頃|/").gsub(/|上旬|中旬|下旬|以降/, "上旬" => "5", "中旬" => "15", "下旬" => "25", "以降" => "01")) - Date.today
+    favored_books = to_be_favored_books.map do |b|
+      rational_type_days_to_release = Date.parse(b.sales_date.delete("/年|月|日|頃|/").gsub(/|上旬|中旬|下旬|以降/, "上旬" => "5", "中旬" => "15", "下旬" => "25", "以降" => "01")) - Date.today rescue 0
       FavoredBook.new(
         author_name: b.author,
         isbn: b.isbn,
