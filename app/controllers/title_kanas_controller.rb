@@ -7,7 +7,7 @@ class TitleKanasController < ApplicationController
     book_favorite = current_user.book_favorites.create!(title_kana_id: title_kana.id)
 
     #お気に入り登録した作品カナの本を取得
-    to_be_favored_books = RakutenWebService::Books::Book.search(
+    pre_favored_books = RakutenWebService::Books::Book.search(
       title_kana: title_kana.title_kana,
       author: title_kana.author_name,
       booksGenreId: "001",
@@ -15,9 +15,12 @@ class TitleKanasController < ApplicationController
       sort: "-releaseDate"
     )
 
-    # 未発売の本だけfavored_booksテーブルに各種情報を登録
-    favored_books = to_be_favored_books.select{|tob| tob.sales_date.delete("/年|月|日|頃|/").gsub(/|上旬|中旬|下旬|以降/, "上旬" => "5", "中旬" => "15", "下旬" => "25", "以降" => "01").to_i > Time.current.strftime("%Y%m%d").to_i}.map do |b|
-      rational_type_days_to_release = Date.parse(b.sales_date.delete("/年|月|日|頃|/").gsub(/|上旬|中旬|下旬|以降/, "上旬" => "5", "中旬" => "15", "下旬" => "25", "以降" => "01")) - Date.today
+    to_be_favored_books = pre_favored_books.select{|pfb| pfb.title_kana == title_kana.title_kana && pfb.author.delete("/ |　/") == title_kana.author_name}
+
+    # favored_booksテーブルに各種情報を登録
+    favored_books = to_be_favored_books.map do |b|
+      rational_type_days_to_release = Date.parse(b.sales_date.delete("/年|月|日|頃|/").gsub(/|上旬|中旬|下旬|以降/, "上旬" => "5", "中旬" => "15", "下旬" => "25", "以降" => "01")) - Date.today rescue 0
+      
       FavoredBook.new(
         author_name: b.author,
         isbn: b.isbn,
