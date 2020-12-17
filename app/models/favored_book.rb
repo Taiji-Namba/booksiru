@@ -4,5 +4,5 @@ class FavoredBook < ApplicationRecord
   validates :isbn, uniqueness:{message: "はすでに登録されています"}
 
   has_many :book_notices, dependent: :destroy
-  has_many :notice_favored_books, through: :book_notices, source: :user
+  has_many :notice_favored_users, through: :book_notices, source: :user
 end
