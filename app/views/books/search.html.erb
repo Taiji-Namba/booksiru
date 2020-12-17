@@ -2,8 +2,8 @@
 <div class = "content">
   <%= render "search_box", books: @books, genres: @genres %>
   <div id = "book_list">    
-    <% if @author_books.present? %>
-      <% @author_books.each do |book| %>
+    <% if @title_books.present? %>
+      <% @title_books.each do |book| %>
         <div class="list_books_author">
           <%= link_to_if(book.medium_image_url.present?, image_tag(book.medium_image_url, style: "width: 70px;height: 100px;display: inline-block;"), book.item_url) %>
           <%= link_to book.title, book.item_url %>
@@ -30,8 +30,8 @@
       <% end %>
     <% end %>
 
-    <% if @title_books.present? %>
-      <% @title_books.each do |book| %>
+    <% if @author_books.present? %>
+      <% @author_books.each do |book| %>
         <div class="list_books_title">
           <%= link_to_if(book.medium_image_url.present?, image_tag(book.medium_image_url, style: "width: 70px;height: 100px;display: inline-block;"), book.item_url) %>
           <%= link_to book.title, book.item_url %>

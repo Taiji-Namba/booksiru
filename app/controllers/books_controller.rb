@@ -11,8 +11,7 @@ class BooksController < ApplicationController
         author: params[:keyword],
         booksGenreId: params[:booksgenreid],
         orFlag: 0,
-        sort: "sales",
-        hits: 5
+        sort: "standard",
       )
     else
       redirect_to root_path
@@ -23,8 +22,7 @@ class BooksController < ApplicationController
         title: params[:keyword],
         booksGenreId: params[:booksgenreid],
         orFlag: 0,
-        sort: "sales",
-        hits: 5
+        sort: "standard",
       )
     end
   end
