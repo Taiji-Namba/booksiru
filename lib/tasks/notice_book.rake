@@ -4,13 +4,13 @@ namespace :notice_book do
   desc "本の発売日までの日数を更新"
   task update_days: :environment do
     FavoredAuthorBook.all.each do |t|
-      rational_type_days_to_release = Date.parse(t.sales_date.delete("/年|月|日|頃|/").gsub(/|上旬|中旬|下旬|以降/, "上旬" => "5", "中旬" => "15", "下旬" => "25", "以降" => "01")) - Date.today
+      rational_type_days_to_release = Date.parse(t.sales_date.delete("/年|月|日|頃|/").gsub(/|上旬|中旬|下旬|以降/, "上旬" => "5", "中旬" => "15", "下旬" => "25", "以降" => "01")) - Date.today rescue 0
       
       t.update_attribute :days_to_release, rational_type_days_to_release.to_i
     end
       
     FavoredBook.all.each do |t|
-      rational_type_days_to_release = Date.parse(t.sales_date.delete("/年|月|日|頃|/").gsub(/|上旬|中旬|下旬|以降/, "上旬" => "5", "中旬" => "15", "下旬" => "25", "以降" => "01")) - Date.today
+      rational_type_days_to_release = Date.parse(t.sales_date.delete("/年|月|日|頃|/").gsub(/|上旬|中旬|下旬|以降/, "上旬" => "5", "中旬" => "15", "下旬" => "25", "以降" => "01")) - Date.today rescue 0
       
       t.update_attribute :days_to_release, rational_type_days_to_release.to_i
     end
