@@ -1,3 +1,17 @@
 <h1>ブクシル</h1>
 <p>好きな作家の新刊発売日が近くなるとメールでお知らせ</p>
 <%= render partial: "search_box" %>
+
+<div id = "book_list">    
+    <% if @unreleased_books.present? %>
+      <% @unreleased_books.each do |book| %>
+        <div class="list_books_author">
+          <%= link_to_if(book.medium_image_url.present?, image_tag(book.medium_image_url, style: "width: 70px;height: 100px;display: inline-block;"), book.item_url) %>
+          <%= link_to book.title, book.item_url %>
+          <%= book.author %>
+          <%= book.sales_date %>
+          <%= book.item_price %>円(税込み)
+        </div>
+      <% end %>
+    <% end %>
+</div>
