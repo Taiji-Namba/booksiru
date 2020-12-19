@@ -1,77 +1,8 @@
-<h1>New books information</h1>
-<div class = "content">
-  <%= render "search_box", books: @books, genres: @genres %>
-  <div id = "book_list">    
-    <% if @title_books.present? %>
-      <% @title_books.each do |book| %>
-        <div class="list_books_author">
-          <%= link_to_if(book.medium_image_url.present?, image_tag(book.medium_image_url, style: "width: 70px;height: 100px;display: inline-block;"), book.item_url) %>
-          <%= link_to book.title, book.item_url %>
+<%= render "search_box", books: @books, genres: @genres %>
 
-          <% if user_signed_in? %>
-            <% title_kana = TitleKana.registered(book) %>
-            <% if BookFavorite.favored_by?(title_kana, current_user) %>
-              <%= render "title_kanas/favorite", title_kana: title_kana %>
-            <% else %> 
-              <%= render "title_kanas/not_favorite", title_kana: title_kana, book: book %>
-            <% end %>
-          <% else %>
-            <%= render "title_kanas/not_favorite", title_kana: title_kana, book: book %>
-          <% end %>
-
-          <%= book.author %>
-
-          <% if user_signed_in? %>
-            <% author = Author.registered(book) %>
-            <% if AuthorFavorite.favored_by?(author, current_user) %>
-              <%= render "favorite", {author: author}%>
-            <% else %> 
-              <%= render "not_favorite", {author: author, book: book} %>
-            <% end %>
-          <% else %>
-            <%= render "not_favorite", {author: author, book: book} %>
-          <% end %>
-
-          <%= book.sales_date %>
-          <%= book.item_price %>円(税込み)
-        </div>
-      <% end %>
-    <% end %>
-
-    <% if @author_books.present? %>
-      <% @author_books.each do |book| %>
-        <div class="list_books_title">
-          <%= link_to_if(book.medium_image_url.present?, image_tag(book.medium_image_url, style: "width: 70px;height: 100px;display: inline-block;"), book.item_url) %>
-          <%= link_to book.title, book.item_url %>
-
-          <% if user_signed_in? %>
-            <% title_kana = TitleKana.registered(book) %>
-            <% if BookFavorite.favored_by?(title_kana, current_user) %>
-              <%= render "title_kanas/favorite", title_kana: title_kana %>
-            <% else %> 
-              <%= render "title_kanas/not_favorite", title_kana: title_kana, book: book %>
-            <% end %>
-          <% else %>
-            <%= render "title_kanas/not_favorite", title_kana: title_kana, book: book %>
-          <% end %>
-          
-          <%= book.author %>
-
-          <% if user_signed_in? %>
-            <% author = Author.registered(book) %>
-            <% if AuthorFavorite.favored_by?(author, current_user) %>
-              <%= render "favorite", {author: author}%>
-            <% else %> 
-              <%= render "not_favorite", {author: author, book: book} %>
-            <% end %>
-          <% else %>
-            <%= render "not_favorite", {author: author, book: book} %>
-          <% end %>
-            
-          <%= book.item_price %>円(税込み)
-          <%= book.sales_date %>
-        </div>
-      <% end %>
-    <% end %>
+<div class = "container-fluid" >
+  <div class = "row">
+    <%= render partial: "search_result", collection: @title_books, as: "book" %>
+    <%= render partial: "search_result", collection: @author_books, as: "book" %>
   </div>
 </div>
