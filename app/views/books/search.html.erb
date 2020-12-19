@@ -8,20 +8,28 @@
           <%= link_to_if(book.medium_image_url.present?, image_tag(book.medium_image_url, style: "width: 70px;height: 100px;display: inline-block;"), book.item_url) %>
           <%= link_to book.title, book.item_url %>
 
-          <% title_kana = TitleKana.registered(book) %>
-          <% if BookFavorite.favored_by?(title_kana, current_user) %>
+          <% if user_signed_in? %>
+            <% title_kana = TitleKana.registered(book) %>
+            <% if BookFavorite.favored_by?(title_kana, current_user) %>
               <%= render "title_kanas/favorite", title_kana: title_kana %>
-          <% else %> 
+            <% else %> 
               <%= render "title_kanas/not_favorite", title_kana: title_kana, book: book %>
+            <% end %>
+          <% else %>
+            <%= render "title_kanas/not_favorite", title_kana: title_kana, book: book %>
           <% end %>
 
           <%= book.author %>
 
-          <% author = Author.registered(book) %>
-          <% if AuthorFavorite.favored_by?(author, current_user) %>
+          <% if user_signed_in? %>
+            <% author = Author.registered(book) %>
+            <% if AuthorFavorite.favored_by?(author, current_user) %>
               <%= render "favorite", {author: author}%>
-          <% else %> 
+            <% else %> 
               <%= render "not_favorite", {author: author, book: book} %>
+            <% end %>
+          <% else %>
+            <%= render "not_favorite", {author: author, book: book} %>
           <% end %>
 
           <%= book.sales_date %>
@@ -36,20 +44,28 @@
           <%= link_to_if(book.medium_image_url.present?, image_tag(book.medium_image_url, style: "width: 70px;height: 100px;display: inline-block;"), book.item_url) %>
           <%= link_to book.title, book.item_url %>
 
-          <% title_kana = TitleKana.registered(book) %>
-          <% if BookFavorite.favored_by?(title_kana, current_user) %>
+          <% if user_signed_in? %>
+            <% title_kana = TitleKana.registered(book) %>
+            <% if BookFavorite.favored_by?(title_kana, current_user) %>
               <%= render "title_kanas/favorite", title_kana: title_kana %>
-          <% else %> 
+            <% else %> 
               <%= render "title_kanas/not_favorite", title_kana: title_kana, book: book %>
+            <% end %>
+          <% else %>
+            <%= render "title_kanas/not_favorite", title_kana: title_kana, book: book %>
           <% end %>
           
           <%= book.author %>
 
-          <% author = Author.registered(book) %>
-          <% if AuthorFavorite.favored_by?(author, current_user) %>
+          <% if user_signed_in? %>
+            <% author = Author.registered(book) %>
+            <% if AuthorFavorite.favored_by?(author, current_user) %>
               <%= render "favorite", {author: author}%>
-          <% else %> 
+            <% else %> 
               <%= render "not_favorite", {author: author, book: book} %>
+            <% end %>
+          <% else %>
+            <%= render "not_favorite", {author: author, book: book} %>
           <% end %>
             
           <%= book.item_price %>円(税込み)
