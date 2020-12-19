@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     post "users/guest_sign_in", to: "users/sessions#new_guest"
   end
 
-  root "books#home"
+  root "books#top"
 
   resources :users,only: [:favorite] do 
     get "favorite", on: :collection
