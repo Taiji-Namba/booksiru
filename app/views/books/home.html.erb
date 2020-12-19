@@ -1,3 +1,6 @@
 <h1>ブクシル</h1>
 <p>好きな作家の新刊発売日が近くなるとメールでお知らせ</p>
-<%= render partial: "search_box" %>
+<%= render "search_box" %>
+<%= render "book_list", genre: Genre.find_by(genre: "コミック").genre, books: @unreleased_comics %>
+<%= render "book_list", genre: Genre.find_by(genre: "ライトノベル").genre,books: @unreleased_light_novels %>
+<%= render "book_list", genre: Genre.find_by(genre: "小説・エッセイ").genre,books: @unreleased_novels_and_essays %>
