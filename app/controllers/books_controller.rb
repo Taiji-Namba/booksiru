@@ -1,7 +1,7 @@
 class BooksController < ApplicationController
   attr_accessor :books 
   
-  def home
+  def top
     comics = RakutenWebService::Books::Book.search(
       booksGenreId: Genre.find_by(genre: "コミック").booksgenreid,
       sort: "standard"
