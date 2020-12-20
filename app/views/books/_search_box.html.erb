@@ -1,8 +1,9 @@
-<div id = "search-box">
+<div class = "input-group" >
   <%= form_with model:@book, url: search_books_path, method: :get, local: true do |f| %>
-    <%= f.text_field :book, id: "book_search", name: "keyword", placeholder: "キーワードを打ち込んで下さい", style: "width: 300px;" %>
-    <%= f.collection_select :booksgenreid, Genre.all, :booksgenreid, :genre, selected: "Genre.first" %>
-    <%= f.submit "検索" %>
+    <div class = "input-group-append">
+      <%= f.text_field :book, id: "book_search", name: "keyword", placeholder: "作品名か作者名を入力してください", class: "form-control", style: "width: 300px;" %>
+      <%= f.collection_select :booksgenreid, Genre.all, :booksgenreid, :genre, selected: "Genre.first" %>
+      <%= f.submit "検索" %>
+    </div>
   <% end %>
-  作家名か作品名を入力してください
 </div>
