@@ -9,7 +9,11 @@
       <%# 作品お気に入り登録ボタン %>
       <% if user_signed_in? %>
         <% title_kana = TitleKana.registered(book) %>
-        <% BookFavorite.favored_by?(title_kana, current_user) ? (render "title_kanas/favorite", title_kana: title_kana) : (render "title_kanas/not_favorite", title_kana: title_kana, book: book) %>
+        <% if BookFavorite.favored_by?(title_kana, current_user) %>
+          <%= render "title_kanas/favorite", title_kana: title_kana %>
+        <% else %> 
+          <%= render "title_kanas/not_favorite", title_kana: title_kana, book: book %>
+        <% end %>
       <% else %>
         <%= render "title_kanas/not_favorite", title_kana: title_kana, book: book %>
       <% end %>
@@ -19,7 +23,11 @@
       <%# 著者お気に入りボタン %>
       <% if user_signed_in? %>
         <% author = Author.registered(book) %>
-        <% AuthorFavorite.favored_by?(author, current_user) ? (render "favorite", author: author) : (render "not_favorite", author: author, book: book) %>
+        <% if AuthorFavorite.favored_by?(author, current_user) %>
+          <%= render "favorite", {author: author}%>
+        <% else %> 
+          <%= render "not_favorite", {author: author, book: book} %>
+        <% end %>
       <% else %>
         <%= render "not_favorite", {author: author, book: book} %>
       <% end %>
