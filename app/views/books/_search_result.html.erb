@@ -4,7 +4,7 @@
         <%= link_to_if(book.large_image_url.present?, image_tag(book.large_image_url), book.item_url) %>
     </div>
     <div class="card-body text-dark book-body" style= "height: 290px;">
-      <p><%= link_to book.title, book.item_url %></p>
+      <p><%= book.title %></p>
       
       <%# 作品お気に入り登録ボタン %>
       <% if user_signed_in? %>
