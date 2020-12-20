@@ -27,5 +27,9 @@ body {
     sans-serif;
 }
 
+#brand {
+  margin-right: 7rem;
+}
+
 $primary: #ffdc00;
 @import "bootstrap/scss/bootstrap";
