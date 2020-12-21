@@ -10,7 +10,7 @@ class BooksController < ApplicationController
     
     light_novels = RakutenWebService::Books::Book.search(
       booksGenreId: Genre.find_by(genre: "ライトノベル").booksgenreid,
-      sort: "standard"
+      sort: "sales"
     )
     @unreleased_light_novels = light_novels.select{|book| book.sales_date.delete("/年|月|日|頃|/").gsub(/|上旬|中旬|下旬|以降/, "上旬" => "5", "中旬" => "15", "下旬" => "25", "以降" => "01").to_i > Time.current.strftime("%Y%m%d").to_i}
 
