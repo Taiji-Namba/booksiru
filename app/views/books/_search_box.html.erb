@@ -1,9 +1,11 @@
-<div class = "input-group" >
-  <%= form_with model:@book, url: search_books_path, method: :get, local: true do |f| %>
-    <div class = "input-group-append">
-      <%= f.text_field :book, id: "book_search", name: "keyword", placeholder: "作品名か作者名を入力してください", class: "form-control", style: "width: 300px;" %>
-      <%= f.collection_select :booksgenreid, Genre.all, :booksgenreid, :genre, selected: "Genre.first" %>
-      <%= f.submit "検索" %>
-    </div>
-  <% end %>
+<div class="container" >  
+  <div class = "d-flex justify-content-center input-group my-3" >
+    <%= form_with model:@book, url: search_books_path, method: :get, local: true do |f| %>
+      <div class = "input-group-append" >
+        <%= f.text_field :book, name: "keyword", placeholder: "作品名か作者名を入力してください", style: "width: 300px; border-width: 1px; border-color: #7e837f; padding: 2rem 1rem; border-top-left-radius: 0.25rem; border-bottom-left-radius: 0.25rem; height: 1rem; border-right: 0;" %>
+        <%= f.collection_select :booksgenreid, Genre.all, :booksgenreid, :genre, {selected: "Genre.first"}, {class: " pl-2 pr-4", style: "border-width: 1px; border-color: #7e837f;"} %>
+        <%= f.submit "検索",class: "px-3 text-white rounded-right", style: "border-width: 1px; border-color: #7e837f; background-color: #7e837f;" %>
+      </div>
+    <% end %>
+  </div>
 </div>
