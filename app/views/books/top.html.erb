@@ -1,23 +1,29 @@
-<p>好きな作家の新刊発売日が近くなるとメールでお知らせ</p>
-<%= render "search_box" %>
-
-<p>コミック</p>
-<div class = "container-fluid" >
-  <div class = "row">
-    <%= render partial: "book_list", collection: @unreleased_comics, as: "book" %>
+<div class = "top-header-wrapper">
+  <div class = "top-header-container">
+    <%= render "layouts/header_link" %>
+    <p class = "catch-copy" style = "margin-left:5%;">新刊の発売日が近くなったらメールでお知らせ</p>
+    <%= render "search_box" %>
   </div>
 </div>
-
-<p>小説・エッセイ</p>
-<div class = "container-fluid" >
-  <div class = "row">
-    <%= render partial: "book_list", collection: @unreleased_novels_and_essays, as: "book" %>
+<div class = "content-wrapper">
+  <p class = "content-title">コミック</p>
+  <div class = "container-fluid" >
+    <div class = "row">
+      <%= render partial: "book_list", collection: @unreleased_comics, as: "book" %>
+    </div>
   </div>
-</div>
 
-<p>ライトノベル</p>
-<div class = "container-fluid" >
-  <div class = "row">
-    <%= render partial: "book_list", collection: @unreleased_light_novels, as: "book" %>
+  <p class = "content-title">小説・エッセイ</p>
+  <div class = "container-fluid" >
+    <div class = "row">
+      <%= render partial: "book_list", collection: @unreleased_novels_and_essays, as: "book" %>
+    </div>
+  </div>
+
+  <p class = "content-title">ライトノベル</p>
+  <div class = "container-fluid" >
+    <div class = "row">
+      <%= render partial: "book_list", collection: @unreleased_light_novels, as: "book" %>
+    </div>
   </div>
 </div>
