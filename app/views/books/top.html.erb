@@ -1,26 +1,26 @@
 <div class = "top-header-wrapper">
   <div class = "top-header-container">
-    <%= render "top_header_link" %>
-    <p class = "catch-copy">新刊の発売日が近くなったらメールでお知らせ</p>
+    <%= render "layouts/header_link" %>
+    <p class = "catch-copy" style = "margin-left:5%;">新刊の発売日が近くなったらメールでお知らせ</p>
     <%= render "search_box" %>
   </div>
 </div>
 <div class = "content-wrapper">
-  <p>コミック</p>
-  <div class = "container-flzxuid" >
+  <p class = "content-title">コミック</p>
+  <div class = "container-fluid" >
     <div class = "row">
       <%= render partial: "book_list", collection: @unreleased_comics, as: "book" %>
     </div>
   </div>
 
-  <p>小説・エッセイ</p>
+  <p class = "content-title">小説・エッセイ</p>
   <div class = "container-fluid" >
     <div class = "row">
       <%= render partial: "book_list", collection: @unreleased_novels_and_essays, as: "book" %>
     </div>
   </div>
 
-  <p>ライトノベル</p>
+  <p class = "content-title">ライトノベル</p>
   <div class = "container-fluid" >
     <div class = "row">
       <%= render partial: "book_list", collection: @unreleased_light_novels, as: "book" %>
