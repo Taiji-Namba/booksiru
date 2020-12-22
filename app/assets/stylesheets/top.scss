@@ -1,0 +1,28 @@
+.top-header-wrapper{
+  background-image:url("/assets/header-image.png");
+  background-size:cover;
+  height:300px;
+}
+
+.top-header-container{
+  width:90%;
+  margin:0 auto;
+}
+
+.catch-copy{
+  color:#626262;
+  background-color:rgba(255,255,255,0.5);
+  padding:1rem 10px;
+  display:inline-block;
+  font-size:2rem;
+}
+
+span{
+  display:block;
+  font-size:1rem;
+}
+
+.content-wrapper{
+  width:90%;
+  margin:0 auto;
+}
