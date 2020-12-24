@@ -3,7 +3,7 @@
     <div class = "mx-auto card-header border-bottom p-0 m-0" style= "height: 200px;" >
         <%= link_to_if(book.large_image_url.present?, image_tag(book.large_image_url), book.item_url) %>
     </div>
-    <div class="card-body book-body bg-primary " style= "height: 290px; color:#626262;">
+    <div class="card-body book-body bg-primary " style= "height: 310px; color:#626262;">
     <div class = "title_kana_favorite_button" >
       <p><%= book.title %></p>
         <% if user_signed_in? %>
