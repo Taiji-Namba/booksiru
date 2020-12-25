@@ -1,16 +1,16 @@
 <nav class="navbar navbar-expand px-0 pb-0">
-  <%= link_to "ブクシル", root_path, class: "navbar-brand text-primary", id: "brand", style: "font-size:2rem;"%>
+  <%= link_to "ブクシル", root_path, class: "navbar-brand", id: "brand", style: "font-size:2rem; color:#2cbae7"%>
   <div class="navbar-nav">
     <% if user_signed_in? %>
     <!-- ログイン時 -->
-      <%= link_to "お気に入り一覧", favorite_users_path, class: "nav-item nav-link text-primary" %>
-      <%= link_to "アカウント編集", edit_user_registration_path, class: "nav-item nav-link text-primary" %>
-      <%= link_to "ログアウト", destroy_user_session_path, class: "nav-item nav-link text-primary", method: :delete, data: { confirm: "ログアウトしますか？" } %>
+      <%= link_to "お気に入り一覧", favorite_users_path, class: "nav-item nav-link", style: "color:#2cbae7" %>
+      <%= link_to "アカウント編集", edit_user_registration_path, class: "nav-item nav-link", style: "color:#2cbae7" %>
+      <%= link_to "ログアウト", destroy_user_session_path, class: "nav-item nav-link", style: "color:#2cbae7", method: :delete, data: { confirm: "ログアウトしますか？" } %>
     <% else %>
     <!-- 非ログイン時 -->
-      <%= link_to "新規登録", new_user_registration_path, class: "nav-item nav-link text-primary" %>
-      <%= link_to "ログイン", new_user_session_path, class: "nav-item nav-link text-primary" %>
-      <%= link_to "ゲストログイン", users_guest_sign_in_path, class: "nav-item nav-link text-primary", method: :post %>
+      <%= link_to "新規登録", new_user_registration_path, class: "nav-item nav-link", style: "color:#2cbae7" %>
+      <%= link_to "ログイン", new_user_session_path, class: "nav-item nav-link", style: "color:#2cbae7" %>
+      <%= link_to "ゲストログイン", users_guest_sign_in_path, class: "nav-item nav-link", style: "color:#2cbae7", method: :post %>
     <% end %>
   </div>
 </nav>
