@@ -1,10 +1,10 @@
 <% if user_signed_in? %>
   <%= form_with model: author, url: {controller: "authors", action: "create"}, method: :post, local: true do |f| %>
     <%= f.hidden_field :author_name, value: book.author.delete("/ |　/") %>
-    <%= f.submit "☆" %>
+    <%= f.submit "この作者の新刊情報がほしい" %>
   <% end %>
 <% else %>
   <%= form_with url: new_user_session_path, local: true do |f| %>
-    <%= f.submit "☆" %>
+    <%= f.submit "この作者の新刊情報がほしい" %>
   <% end %>
 <% end %>
