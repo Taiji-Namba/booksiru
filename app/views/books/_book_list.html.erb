@@ -4,32 +4,36 @@
         <%= link_to_if(book.large_image_url.present?, image_tag(book.large_image_url), book.item_url) %>
     </div>
     <div class="card-body book-body bg-primary p-2" style= "height: 310px; color:#626262;">
-    <div class = "favorite_button" >
-      <% if user_signed_in? %>
-        <% title_kana = TitleKana.registered(book) %>
-        <% if BookFavorite.favored_by?(title_kana, current_user) %>
-          <%= render "title_kanas/favorite", title_kana: title_kana %>
-        <% else %> 
-          <%= render "title_kanas/not_favorite", title_kana: title_kana, book: book %>
-        <% end %>
-      <% else %>
-        <%= render "title_kanas/not_favorite", title_kana: title_kana, book: book %>
-      <% end %>
-      <p class = "favorite_button_item"><%= book.title %></p>
-    </div>
+      <div class = "favorite_button_container" >
+        <div class = "favorite_button">
+          <% if user_signed_in? %>
+            <% title_kana = TitleKana.registered(book) %>
+            <% if BookFavorite.favored_by?(title_kana, current_user) %>
+              <%= render "title_kanas/favorite", title_kana: title_kana %>
+            <% else %> 
+              <%= render "title_kanas/not_favorite", title_kana: title_kana, book: book %>
+            <% end %>
+          <% else %>
+            <%= render "title_kanas/not_favorite", title_kana: title_kana, book: book %>
+          <% end %>
+        </div>
+          <p class = "favorite_button_item"><%= book.title %></p>
+      </div>
       
-    <div class = "favorite_button" >
-      <% if user_signed_in? %>
-        <% author = Author.registered(book) %>
-        <% if AuthorFavorite.favored_by?(author, current_user) %>
-          <%= render "favorite", {author: author}%>
-        <% else %> 
-          <%= render "not_favorite", {author: author, book: book} %>
-        <% end %>
-      <% else %>
-        <%= render "not_favorite", {author: author, book: book} %>
-      <% end %>
-      <p class = "favorite_button_item"><%= book.author %></p>
+      <div class = "favorite_button_container" >
+        <div class = "favorite_button">
+          <% if user_signed_in? %>
+            <% author = Author.registered(book) %>
+            <% if AuthorFavorite.favored_by?(author, current_user) %>
+              <%= render "favorite", {author: author}%>
+            <% else %> 
+              <%= render "not_favorite", {author: author, book: book} %>
+            <% end %>
+          <% else %>
+            <%= render "not_favorite", {author: author, book: book} %>
+          <% end %>
+        </div>
+        <p class = "favorite_button_item"><%= book.author %></p>
       </div>
 
       <p><%= book.sales_date %>発売</p>
