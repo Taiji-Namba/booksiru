@@ -2,10 +2,10 @@
   <%= form_with model: title_kana, url: {controller: "title_kanas", action: "create"}, method: :post, local: true do |f| %>
     <%= f.hidden_field :title_kana, value: book.title_kana %>
     <%= f.hidden_field :author_name, value: book.author.delete("/ |　/") %>
-    <%= f.submit "このシリーズの新刊情報がほしい" %>
+    <%= f.submit "このシリーズの新刊情報を通知",class: "favorite_button" %>
   <% end %>
 <% else %>
   <%= form_with url: new_user_session_path, local: true do |f| %>
-    <%= f.submit "このシリーズの新刊情報がほしい" %>
+    <%= f.submit "このシリーズの新刊情報を通知", class: "favorite_button" %>
   <% end %>
 <% end %>

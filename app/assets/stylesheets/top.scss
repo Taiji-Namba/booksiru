@@ -13,7 +13,6 @@
   color: #2cbae7;
   background-color: rgba(255, 255, 255, 0.5);
   padding: 1rem 10px;
-  display: inline-block;
   font-size: 2rem;
   font-weight:bold;
 }
@@ -31,15 +30,18 @@
 }
 
 .favorite_button_container{
-  display: flex;
   margin-bottom:10px;
 }
 
 .favorite_button{
   border: none;
-  outline: none;
-  background-color:transparent;
-  background: transparent;
+  background: #2cbae7;
+  color: white;
+  white-space: pre-line;
+  word-break: break-word;
+  border-radius:0.5rem;
+  // line-height:1.25rem;
+  margin:0.25rem 0 1rem 0;
 }
 
 .favorite_button_item{
