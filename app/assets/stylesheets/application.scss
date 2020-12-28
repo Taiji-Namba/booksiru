@@ -18,6 +18,11 @@ $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
 @import "@fortawesome/fontawesome-free/scss/fontawesome";
 @import "@fortawesome/fontawesome-free/scss/regular";
 
+
+$primary: #f9e9d5;
+$secondary: #c0b9cc;
+@import "bootstrap/scss/bootstrap";
+
 body {
   font-family: "Helvetica Neue",
     Arial,
@@ -30,7 +35,3 @@ body {
 #brand {
   margin-right: 7rem;
 }
-
-$primary: #f9e9d5;
-$secondary: #c0b9cc;
-@import "bootstrap/scss/bootstrap";
