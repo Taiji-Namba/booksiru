@@ -1,8 +1,12 @@
-<%= render "search_box", books: @books, genres: @genres %>
-
-<div class = "container-fluid" >
-  <div class = "row">
-    <%= render partial: "search_result", collection: @title_books, as: "book" %>
-    <%= render partial: "search_result", collection: @author_books, as: "book" %>
+<div class = "header-container">  
+  <%= render "layouts/header_link" %>
+  <%= render "search_box" %>
+</div>
+<div class = "content-wrapper">
+  <div class = "container-fluid" >
+    <div class = "row">
+      <%= render partial: "search_result", collection: @title_books, as: "book" %>
+      <%= render partial: "search_result", collection: @author_books, as: "book" %>
+    </div>
   </div>
 </div>
