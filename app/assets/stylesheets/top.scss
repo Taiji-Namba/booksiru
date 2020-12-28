@@ -17,48 +17,4 @@
   font-weight:bold;
 }
 
-.content-wrapper {
-  width: 90%;
-  margin: 0 auto;
-  padding: 0 10px;
-}
-
-.content-title {
-  margin: 0.5rem 0;
-  font-size: 1.5rem;
-  color: #2cbae7;
-}
-
-.favorite_button_container{
-  margin-bottom:10px;
-}
-
-.favorite_button_item{
-  margin: 0.25rem 0 0 8px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-}
-
-
-.favorite_button{
-  border: none;
-  background: #2cbae7;
-  color: white;
-  white-space: pre-line;
-  word-break: break-word;
-  border-radius:0.5rem;
-  // line-height:1.25rem;
-  margin:0.25rem 0 1rem 0;
-}
-
-.remove_from_favorite_button{
-  border: none;
-  background: #c3597d;
-  color: white;
-  white-space: pre-line;
-  word-break: break-word;
-  border-radius:0.5rem;
-  // line-height:1.25rem;
-  margin:0.25rem 0 1rem 0;
-}
+@import "content"
