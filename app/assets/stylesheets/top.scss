@@ -33,6 +33,14 @@
   margin-bottom:10px;
 }
 
+.favorite_button_item{
+  margin: 0.25rem 0 0 8px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+
 .favorite_button{
   border: none;
   background: #2cbae7;
@@ -42,8 +50,4 @@
   border-radius:0.5rem;
   // line-height:1.25rem;
   margin:0.25rem 0 1rem 0;
-}
-
-.favorite_button_item{
-  margin: 0.25rem 0 0 8px;
 }
