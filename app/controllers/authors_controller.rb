@@ -26,6 +26,7 @@ class AuthorsController < ApplicationController
         days_to_release: rational_type_days_to_release.to_i,
         publisher_name: b.publisher_name,
         item_url: b.item_url,
+        large_image_url: b.large_image_url,
         item_price: b.item_price,
         size: b.size
       )
