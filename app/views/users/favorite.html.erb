@@ -1,11 +1,23 @@
-<h1>お気に入り</h1>
-<br>
-<h2>シリーズ一覧</h2>
-<div>
-  <%= render "favorite_series" %>
+<div class = "header-container">  
+  <%= render "layouts/header_link" %>
+  <%= render "books/search_box" %>
 </div>
+
+<h2>お気に入り</h2>
 <br>
-<h2>作家一覧</h2>
-<div>
-  <%= render "favorite_author" %>
+
+<div class = "content-wrapper"> 
+  <h3>シリーズ一覧</h3>
+  <div class = "container-fluid" >
+    <div class = "row">
+      <%= render partial: "favorite_series", collection: @favored_books, as: "book" %>
+    </div>
+  </div>
+
+<h3>作家一覧</h3>
+  <div class = "container-fluid" >
+    <div class = "row">
+      <%= render partial: "favorite_author", collection: @favored_authors, as: "book" %>
+    </div>
+  </div>
 </div>

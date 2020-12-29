@@ -1,5 +1,25 @@
-<% @favored_books.each do |b| %>
-  <div>
-  <%= b.title %>
+<div class="col-4 col-md-3 col-lg-2 mb-4 p-0">
+  <div class = "card border-primary mb-3" style = "width:205px; border-width:2px;">
+    <div class = "mx-auto card-header border-bottom p-0 m-0">
+        <%= link_to_if(book.large_image_url.present?, image_tag(book.large_image_url), book.item_url) %>
+    </div>
+    <div class="card-body book-body bg-primary p-2" style= "height: 200px; color:#626262;">
+      <div class = "favorite_button_container" >
+        <p class = "favorite_button_item"><%= book.title %></p>
+          <% if user_signed_in? %>
+            <% title_kana = TitleKana.registered(book) %>
+            <% if BookFavorite.favored_by?(title_kana, current_user) %>
+              <%= render "title_kanas/favorite", title_kana: title_kana %>
+            <% else %> 
+              <%= render "title_kanas/not_favorite", title_kana: title_kana, book: book %>
+            <% end %>
+          <% else %>
+            <%= render "title_kanas/not_favorite", title_kana: title_kana, book: book %>
+          <% end %>
+      </div>
+      
+      <p><%= book.sales_date %>発売</p>
+      <p><%= book.item_price %>円(税込み)</p>
+    </div>
   </div>
-<% end %>
+</div>
