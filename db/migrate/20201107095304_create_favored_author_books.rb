@@ -7,6 +7,7 @@ class CreateFavoredAuthorBooks < ActiveRecord::Migration[6.0]
       t.string :sales_date
       t.integer :days_to_release
       t.string :item_url
+      t.string :large_image_url
       t.string :item_price
       t.string :publisher_name
       t.string :size
