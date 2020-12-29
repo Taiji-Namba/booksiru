@@ -1,14 +1,15 @@
+<h2>お気に入り</h2>
+<br>
+
 <div class = "content-wrapper"> 
-  <h1>お気に入り</h1>
-  <br>
-  <h2>シリーズ一覧</h2>
+  <h3>シリーズ一覧</h3>
   <div class = "container-fluid" >
     <div class = "row">
       <%= render partial: "favorite_series", collection: @favored_books, as: "book" %>
     </div>
   </div>
 
-  <h2>作家一覧</h2>
+  <h3>作家一覧</h3>
   <div class = "container-fluid" >
     <div class = "row">
       <%= render partial: "favorite_author", collection: @favored_authors, as: "book" %>
