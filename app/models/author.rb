@@ -6,5 +6,9 @@ class Author < ApplicationRecord
   def self.registered(book)
     find_or_initialize_by(author_name: book.author.delete("/ |　/"))
   end
+
+  def self.registered_2(book)
+    find_or_initialize_by(author_name: book.author_name)
+  end
   
 end
