@@ -11,6 +11,8 @@
   </head>
 
   <body>
+  <div class="container-fluid <%= devise_controller? ? "mw-md py-4" : "mw-xl p-0" %>">
     <%= yield %>
+  </div>
   </body>
 </html>
