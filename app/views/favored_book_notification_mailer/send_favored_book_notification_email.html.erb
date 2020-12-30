@@ -3,6 +3,10 @@
   ぜひお買い逃しのないように！
 </p>
 
+<p>
+  <%= link_to_if(@large_image_url.present?, image_tag(@large_image_url), @item_url) %>
+</p>
+
   <table>
     <tr>
       <th align="left">発売日</th>
