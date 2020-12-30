@@ -11,6 +11,7 @@ class FavoredBookNotificationMailer < ApplicationMailer
       @days_to_release = book.days_to_release
       @publisher_name = book.publisher_name
       @item_url = book.item_url
+      @large_image_url = book.large_image_url
       @item_price = book.item_price
       @size = book.size
 
