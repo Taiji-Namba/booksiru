@@ -10,7 +10,7 @@
   <h3>シリーズ一覧</h3>
   <div class = "container-fluid" >
     <div class = "row">
-      <%= render "favorite_series", book: @favored_book %>
+      <%= render partial: "favorite_series", collection: @favored_books, as: "book" %>
     </div>
   </div>
 
