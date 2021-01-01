@@ -15,7 +15,7 @@ class FavoredBookNotificationMailer < ApplicationMailer
       @item_price = book.item_price
       @size = book.size
 
-      mail(subject: "【#{@author_name}:#{@title}】発売まであと#{@days_to_release}日です", to: @user.email)
+      mail(subject: "#{@title}発売まであと#{@days_to_release}日です", to: @user.email)
     end
   end
 end
