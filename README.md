@@ -3,6 +3,7 @@
 ### コンセプト
 好きなマンガや作家の新刊がいつのまにか発売されてる！を解消  
 発売3日前になるとメールでお知らせ  
+URL: https://booksiru.com/
 <br>
 <br>
 <br>
@@ -60,5 +61,7 @@ PostgreSQL 13.1
 Bootstrap 4.5.2  
 jQuery 3.5.1  
 
-## Contanct
-namba9499@gmail.com
+## Contact
+南塲 大慈  
+Twitter: https://twitter.com/taitan_progra
+Email: namba9499@gmail.com
