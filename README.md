@@ -63,5 +63,5 @@ jQuery 3.5.1
 
 ## Contact
 南塲 大慈  
-Twitter: https://twitter.com/taitan_progra
+Twitter: https://twitter.com/taitan_progra  
 Email: namba9499@gmail.com
