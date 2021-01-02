@@ -11,8 +11,7 @@ append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "node_module
 
 set :branch, ENV["BRANCH"] || "master"
 
-set :whenever_command, "bundle exec whenever"
-require "whenever/capistrano"
+set :whenever_identifier, -> { "#{fetch(:application)}_#{fetch(:stage)}" }
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
