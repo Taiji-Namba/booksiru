@@ -38,6 +38,7 @@ class AuthorsController < ApplicationController
       current_user.notices.create!(favored_author_book_id: b.id)
     end
 
+    flash[:primary] = "お気に入りに登録しました！"
     redirect_back(fallback_location: root_path)
 
   end

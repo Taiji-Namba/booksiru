@@ -42,7 +42,8 @@ class TitleKanasController < ApplicationController
     favored_books.each do |b|
       current_user.book_notices.create!(favored_book_id: b.id)
     end
-
+    
+    flash[:primary] = "お気に入りに登録しました！"
     redirect_back(fallback_location: root_path)
   end
 

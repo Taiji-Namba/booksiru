@@ -13,6 +13,7 @@ class BookFavoritesController < ApplicationController
       favored_books.destroy_all
     end
 
+    flash[:warning] = "お気に入り解除しました！"
     redirect_back(fallback_location: root_path)
   end
 
