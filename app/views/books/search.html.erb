@@ -2,10 +2,13 @@
   <%= render "layouts/header_link" %>
   <%= render "search_box" %>
 </div>
-<div class = "content-wrapper">
-  <%# お気に入り登録時のフラッシュメッセージ %>
+
+<%# お気に入り登録時のフラッシュメッセージ %>
+<div class = "flash">
   <%= render "layouts/flash_register_favorite" %>
-  
+</div>
+
+<div class = "content-wrapper">
   <div class = "container-fluid" >
     <div class = "row">
       <%= render partial: "search_result", collection: @title_books, as: "book" %>
