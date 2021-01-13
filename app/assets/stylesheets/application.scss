@@ -41,7 +41,7 @@ body {
 }
 
 .alert-notice {
-  @extend .alert-info;
+  @extend .alert-primary;
 }
 
 .alert-alert {
