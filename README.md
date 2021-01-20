@@ -34,7 +34,7 @@ URL: https://booksiru.com/
 - お気に入り一覧ページが見れる
 - 発売日3日前に通知メール送信
 - ER図を用いてデータベース設計
-- AWS(VPC・EC2・RDS・S3・IAM・Route53・ACM)にデプロイ
+- AWS(VPC・EC2・RDS・IAM・Route53・ACM)にデプロイ
 - HTTPS化
 - チームでの開発を意識してプルリクベースで管理
 <br>
