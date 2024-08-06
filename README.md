@@ -60,8 +60,3 @@ Rails 6.0.3.3
 PostgreSQL 13.1  
 Bootstrap 4.5.2  
 jQuery 3.5.1  
-
-## Contact
-南塲 大慈  
-Twitter: https://twitter.com/taitan_progra  
-Email: namba9499@gmail.com
