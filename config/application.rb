@@ -12,5 +12,8 @@ module Booksiru
     config.i18n.default_locale = :ja
     config.time_zone = "Asia/Tokyo"
     config.autoload_paths += %W(#{config.root}/lib)
+
+    # デプロイするサービスのホストを追加する
+    config.hosts << 'booksiru.onrender.com'
   end
 end
